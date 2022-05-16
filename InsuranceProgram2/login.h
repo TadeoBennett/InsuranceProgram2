@@ -4,18 +4,18 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Menu; }
+namespace Ui { class Login; }
 QT_END_NAMESPACE
 
-class Menu : public QMainWindow
+class Login : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    Menu(QWidget *parent = nullptr);
-    ~Menu();
+    Login(QWidget *parent = nullptr);
+    ~Login();
 
 private:
-    Ui::Menu *ui;
+    Ui::Login *ui;
 };
 #endif // LOGIN_H
