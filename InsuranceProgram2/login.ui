@@ -192,8 +192,8 @@ letter-spacing: 2px;
       <string>...</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
-       <normaloff>:/person-icon.png</normaloff>:/person-icon.png</iconset>
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/person-icon.png</normaloff>:/images/person-icon.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -215,8 +215,8 @@ letter-spacing: 2px;
       <string>...</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
-       <normaloff>:/lock-icon.png</normaloff>:/lock-icon.png</iconset>
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/lock-icon.png</normaloff>:/images/lock-icon.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -238,8 +238,8 @@ letter-spacing: 2px;
       <string>...</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
-       <normaloff>:/right-arrow.png</normaloff>:/right-arrow.png</iconset>
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/right-arrow.png</normaloff>:/images/right-arrow.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -419,7 +419,7 @@ Click here to create one</string>
   </action>
  </widget>
  <resources>
-  <include location="images.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -12,7 +12,10 @@ SOURCES += \
     Administrator.cpp \
     BaseUserInfo.cpp \
     CreateAccount.cpp \
+    Customer.cpp \
     Desk.cpp \
+    HomeInsurance.cpp \
+    Insurance.cpp \
     login.cpp \
     main.cpp
 
@@ -20,7 +23,10 @@ HEADERS += \
     Administrator.h \
     BaseUserInfo.h \
     CreateAccount.h \
+    Customer.h \
     Desk.h \
+    HomeInsurance.h \
+    Insurance.h \
     login.h
 
 FORMS += \
@@ -33,4 +39,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    images.qrc
+    resources.qrc
