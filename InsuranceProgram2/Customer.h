@@ -22,7 +22,8 @@ private:
     QString phonenumber;
     int socialsecuritynumber;
 
-    //list for insurance policies
+public:
+    //list for insurances
     QList<Insurance*>insuranceList;
 
     //points to the next customer node on the linked list

@@ -10,7 +10,7 @@ Customer::Customer(int user_id, int userlevel_id, QString uname, QString fname, 
 }
 
 Customer::Customer(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString pwd, int cus_id, QString ctz, QString mname, QString phone, int social):BaseUserInfo(user_id, userlevel_id, uname, fname, lname, a, pwd){
-    //
+    //creating default entries in the insuranceList
     insuranceList.append(new CarInsurance());
     insuranceList.append(new HomeInsurance());
     insuranceList.append(new LifeInsurance());
