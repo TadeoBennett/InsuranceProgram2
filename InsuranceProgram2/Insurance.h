@@ -15,6 +15,7 @@ private:
     int monthlimit;
 
     float paymentremaining;
+    bool enabled;
 
 public:
     //setters
@@ -32,11 +33,14 @@ public:
     int get_monthlimit();
 
     float get_paymentremaining();
+    bool get_enabled();
 
     //other
     float addmonthspaid(float amount); //gets the amount paid by a customer, increments the monthspaid and returns the change.
     void resetInsurance();
     float renewInsurance(float amount);
+
+    virtual void cast(){} //helps with dynamic cast
 };
 
 #endif // INSURANCE_H

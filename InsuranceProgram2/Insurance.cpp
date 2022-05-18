@@ -2,12 +2,16 @@
 
 Insurance::Insurance()
 {
-
+    //if any insurance was created with a non-inherited constructor set the enabled variable as false
+    enabled = false;
 }
 
 Insurance::Insurance(int id, float mpayment, int mpaid, int mlimit):
     insuranceid(id), monthlypayment(mpayment), monthspaid(mpaid), monthlimit(mlimit)
-{}
+{
+    //if any insurance was created using this inherited constructor, set the enabled variable as true for that obejct
+    enabled = true;
+}
 
 void Insurance::set_insuranceid(int id)
 { insuranceid = id; }
@@ -40,6 +44,9 @@ int Insurance::get_monthlimit()
 
 float Insurance::get_paymentremaining()
 { return paymentremaining; }
+
+bool Insurance::get_enabled()
+{ return enabled; }
 
 //-----------------------------------------------------------------------------------
 

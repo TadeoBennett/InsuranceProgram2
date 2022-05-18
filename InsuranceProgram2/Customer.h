@@ -2,6 +2,11 @@
 #define CUSTOMER_H
 
 #include "BaseUserInfo.h"
+#include "CarInsurance.h"
+#include "HomeInsurance.h"
+#include "LifeInsurance.h"
+#include <vector>
+using std::vector;
 
 class Customer: public BaseUserInfo
 {
@@ -18,7 +23,7 @@ private:
     int socialsecuritynumber;
 
     //list for insurance policies
-//    vector<Insurance*>policyList;
+    QList<Insurance*>insuranceList;
 
     //points to the next customer node on the linked list
     Customer* next;

@@ -11,22 +11,26 @@ CONFIG += c++17
 SOURCES += \
     Administrator.cpp \
     BaseUserInfo.cpp \
+    CarInsurance.cpp \
     CreateAccount.cpp \
     Customer.cpp \
     Desk.cpp \
     HomeInsurance.cpp \
     Insurance.cpp \
+    LifeInsurance.cpp \
     login.cpp \
     main.cpp
 
 HEADERS += \
     Administrator.h \
     BaseUserInfo.h \
+    CarInsurance.h \
     CreateAccount.h \
     Customer.h \
     Desk.h \
     HomeInsurance.h \
     Insurance.h \
+    LifeInsurance.h \
     login.h
 
 FORMS += \

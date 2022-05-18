@@ -10,6 +10,11 @@ Customer::Customer(int user_id, int userlevel_id, QString uname, QString fname, 
 }
 
 Customer::Customer(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString pwd, int cus_id, QString ctz, QString mname, QString phone, int social):BaseUserInfo(user_id, userlevel_id, uname, fname, lname, a, pwd){
+    //
+    insuranceList.append(new CarInsurance());
+    insuranceList.append(new HomeInsurance());
+    insuranceList.append(new LifeInsurance());
+
     customerid = cus_id;
     citizenship = ctz;
     middlename = mname;
