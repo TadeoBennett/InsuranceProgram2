@@ -365,7 +365,7 @@ Click here to create one</string>
     <string>Desk Actions</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+D</string>
+    <string>Ctrl+Shift+D</string>
    </property>
   </action>
   <action name="actionAdminActions">
@@ -373,7 +373,7 @@ Click here to create one</string>
     <string>Admin Actions</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+A</string>
+    <string>Ctrl+Shift+A</string>
    </property>
   </action>
   <action name="actionCustomerActions">
@@ -381,12 +381,15 @@ Click here to create one</string>
     <string>Customer Actions</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+C</string>
+    <string>Ctrl+Shift+C</string>
    </property>
   </action>
   <action name="actionDeveloperInfo">
    <property name="text">
     <string>Developer Info</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
    </property>
   </action>
   <action name="actionAboutQt">
@@ -416,9 +419,6 @@ Click here to create one</string>
   <action name="actionCreateAccount">
    <property name="text">
     <string>Create Account(desk only)</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+D</string>
    </property>
   </action>
  </widget>

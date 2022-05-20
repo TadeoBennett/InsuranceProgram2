@@ -77,7 +77,9 @@ void Login::on_loginButton_clicked()
 
             //create the menu
             qDebug()<<"showing the menu to logged in user";
-            //....
+            Menu * newMenu = new Menu;
+            newMenu->show();
+            this->close();
         }else{
             QMessageBox::warning(this, tr("Cannot log in"), tr("Password/Email combination is incorrect."
                                                                " If the problem persists and you are sure your "
@@ -108,28 +110,28 @@ void Login::on_actionCreateAccount_triggered()
 void Login::updateLoginInterface()
 {
     if(loggedIn == false){
-        ui->actionAdminActions->setEnabled(false);
-        ui->actionDeskActions->setEnabled(false);
-        ui->actionCustomerActions->setEnabled(false);
+        ui->actionAdminActions->setVisible(false);
+        ui->actionDeskActions->setVisible(false);
+        ui->actionCustomerActions->setVisible(false);
     }else if(loggedIn){
         int userlevelid = loggedInUser->get_userlevelid();
 
         if(userlevelid == 1){
-            ui->actionAdminActions->setEnabled(true);
-            ui->actionDeskActions->setEnabled(false);
-            ui->actionCustomerActions->setEnabled(false);
+            ui->actionAdminActions->setVisible(true);
+            ui->actionDeskActions->setVisible(false);
+            ui->actionCustomerActions->setVisible(false);
         }else if(userlevelid == 2){
-            ui->actionAdminActions->setEnabled(false);
-            ui->actionDeskActions->setEnabled(true);
-            ui->actionCustomerActions->setEnabled(false);
+            ui->actionAdminActions->setVisible(false);
+            ui->actionDeskActions->setVisible(true);
+            ui->actionCustomerActions->setVisible(false);
         }else if(userlevelid == 3){
-            ui->actionAdminActions->setEnabled(false);
-            ui->actionDeskActions->setEnabled(false);
-            ui->actionCustomerActions->setEnabled(true);
+            ui->actionAdminActions->setVisible(false);
+            ui->actionDeskActions->setVisible(false);
+            ui->actionCustomerActions->setVisible(true);
         }else{
-            ui->actionAdminActions->setEnabled(false);
-            ui->actionDeskActions->setEnabled(false);
-            ui->actionCustomerActions->setEnabled(false);
+            ui->actionAdminActions->setVisible(false);
+            ui->actionDeskActions->setVisible(false);
+            ui->actionCustomerActions->setVisible(false);
         }
     }
 }
