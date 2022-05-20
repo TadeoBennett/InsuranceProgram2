@@ -9,7 +9,7 @@ public:
     Administrator();
 
     //inherits constructor of baseuserinfo
-    Administrator(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString pwd);
+    Administrator(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString em, QString pwd);
 };
 
 #endif // ADMINISTRATOR_H

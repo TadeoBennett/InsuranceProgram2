@@ -3,8 +3,8 @@
 BaseUserInfo::BaseUserInfo()
 {}
 
-BaseUserInfo::BaseUserInfo(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString pwd):
-    userid(user_id), userlevelid(userlevel_id), username(uname), firstname(fname), lastname(lname), age(a), password(pwd)
+BaseUserInfo::BaseUserInfo(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString em, QString pwd):
+    userid(user_id), userlevelid(userlevel_id), username(uname), firstname(fname), lastname(lname), age(a), email(em), password(pwd)
 {}
 
 void BaseUserInfo::set_userid(int id)
@@ -24,6 +24,9 @@ void BaseUserInfo::set_lastname(QString name)
 
 void BaseUserInfo::set_age(int a)
 { age = a; }
+
+void BaseUserInfo::set_email(QString em)
+{ email = em; }
 
 void BaseUserInfo::set_password(QString pwd)
 { password = pwd; }
@@ -47,6 +50,9 @@ QString BaseUserInfo::get_lastname()
 
 int BaseUserInfo::get_age()
 { return age; }
+
+QString BaseUserInfo::get_email()
+{ return email; }
 
 QString BaseUserInfo::get_password()
 { return password; }

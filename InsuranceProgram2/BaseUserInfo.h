@@ -9,7 +9,7 @@ class BaseUserInfo
 {
 public:
     BaseUserInfo();
-    BaseUserInfo(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString pwd);
+    BaseUserInfo(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString em, QString pwd);
 
 private:
     int userid;
@@ -18,6 +18,7 @@ private:
     QString firstname;
     QString lastname;
     int age;
+    QString email;
     QString password;
 
 public:
@@ -28,8 +29,8 @@ public:
     void set_firstname(QString name);
     void set_lastname(QString name);
     void set_age(int a);
+    void set_email(QString em);
     void set_password(QString pwd);
-
 
     //getters
     int get_userid();
@@ -38,6 +39,7 @@ public:
     QString get_firstname();
     QString get_lastname();
     int get_age();
+    QString get_email();
     QString get_password();
 };
 

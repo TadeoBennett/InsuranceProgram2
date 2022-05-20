@@ -12,8 +12,8 @@ class Customer: public BaseUserInfo
 {
 public:
     Customer();
-    Customer(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString pwd);
-    Customer(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString pwd, int cus_id, QString ctz, QString mname, QString phone, int social);
+    Customer(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString em, QString pwd);
+    Customer(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString em, QString pwd, int cus_id, QString ctz, QString mname, QString phone, int social);
 
 private:
     int customerid;
@@ -23,7 +23,7 @@ private:
     int socialsecuritynumber;
 
 public:
-    //list for insurances
+    //list for insurances; contains the information for any policies had
     QList<Insurance*>insuranceList;
 
     //points to the next customer node on the linked list

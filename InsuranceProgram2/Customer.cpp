@@ -5,11 +5,11 @@ Customer::Customer()
 
 }
 
-Customer::Customer(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString pwd):BaseUserInfo(user_id, userlevel_id, uname, fname, lname, a, pwd){
+Customer::Customer(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString em, QString pwd):BaseUserInfo(user_id, userlevel_id, uname, fname, lname, a, em, pwd){
     //this is an inherited constructor
 }
 
-Customer::Customer(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString pwd, int cus_id, QString ctz, QString mname, QString phone, int social):BaseUserInfo(user_id, userlevel_id, uname, fname, lname, a, pwd){
+Customer::Customer(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString em, QString pwd, int cus_id, QString ctz, QString mname, QString phone, int social):BaseUserInfo(user_id, userlevel_id, uname, fname, lname, a, em, pwd){
     //creating default entries in the insuranceList
     insuranceList.append(new CarInsurance());
     insuranceList.append(new HomeInsurance());
