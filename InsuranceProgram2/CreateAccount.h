@@ -3,6 +3,10 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include "Administrator.h"
+#include "Desk.h"
+#include "Customer.h"
+#include "Database.h"
 
 namespace Ui {
 class CreateAccount;

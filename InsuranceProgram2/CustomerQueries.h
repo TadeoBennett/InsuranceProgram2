@@ -1,9 +1,11 @@
 #ifndef CUSTOMERQUERIES_H
 #define CUSTOMERQUERIES_H
 
-#include "Database.h"
+#include "Customer.h"
+#include "Administrator.h"
+#include "Desk.h"
 
-class CustomerQueries: public Database
+class CustomerQueries
 {
 public:
     CustomerQueries();

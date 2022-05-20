@@ -13,6 +13,18 @@
     <height>465</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>544</width>
+    <height>465</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>544</width>
+    <height>465</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Create Desk Account</string>
   </property>
@@ -98,31 +110,13 @@ background-color:  #fff;
    </property>
    <property name="maximumSize">
     <size>
-     <width>571</width>
-     <height>531</height>
+     <width>544</width>
+     <height>465</height>
     </size>
    </property>
    <property name="title">
     <string/>
    </property>
-   <widget class="QLabel" name="keyinputLabel">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>330</y>
-      <width>231</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
-color: #fff;
-}</string>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;9999 used (ignore; used for testing)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="firstnameInput">
     <property name="geometry">
      <rect>
@@ -159,8 +153,8 @@ color:  #000000;
    <widget class="QLineEdit" name="passwordInput">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>220</y>
+      <x>90</x>
+      <y>290</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -172,26 +166,26 @@ color:  #000000;
      <string>Password</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="keyInput">
+   <widget class="QLineEdit" name="emailInput">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>290</y>
+      <x>290</x>
+      <y>220</y>
       <width>171</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>key - 9999</string>
+     <string/>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Normal</enum>
     </property>
     <property name="placeholderText">
-     <string>Key</string>
+     <string>Email</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="repeatpasswordInput">

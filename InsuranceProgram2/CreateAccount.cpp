@@ -1,6 +1,11 @@
 #include "CreateAccount.h"
 #include "ui_CreateAccount.h"
 
+extern bool loggedIn; //flag to check if a user is logged in
+extern Database* globaldb; //holds the database object
+
+extern BaseUserInfo* loggedInUser; //holds the values of the logged in user
+
 CreateAccount::CreateAccount(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CreateAccount)
@@ -30,6 +35,12 @@ void CreateAccount::on_okButton_clicked()
         return;
     }
 
+    if(ui->emailInput->text().trimmed().isEmpty()){
+        QMessageBox::warning(this, tr("Cannot add user"), tr("Email input is empty"));
+        return;
+    }
+
+
     if(ui->passwordInput->text().trimmed().isEmpty()){
         QMessageBox::warning(this, tr("Cannot add user"), tr("Password input is empty"));
         return;
@@ -40,15 +51,45 @@ void CreateAccount::on_okButton_clicked()
         return;
     }
 
-    if(ui->repeatpasswordInput->text() != ui->repeatpasswordInput->text()){
+    if(ui->repeatpasswordInput->text().trimmed() != ui->repeatpasswordInput->text().trimmed()){
         QMessageBox::warning(this, tr("Cannot add user"), tr("Passwords do not match"));
         return;
     }
 
-    QString username = ui->firstnameInput->text()[0] + ui->lastnameInput->text(); //username
-    int userlevel = 2; //desk user level
-    int status = 1; //status value
+    QString email = ui->emailInput->text().trimmed();
+
+    if(globaldb->checkEmail(email)){
+        qDebug()<<"email already exists";
+        QMessageBox::warning(this, tr("Cannot add user"), tr("User already exists with that email"));
+        return;
+    }
+
+
+    QString firstname = ui->firstnameInput->text().trimmed();
+    QString lastname = ui->lastnameInput->text().trimmed();
+    int age = ui->ageInput->value();
+    QString password = ui->passwordInput->text().trimmed();
+    QString username = ui->firstnameInput->text()[0] + ui->lastnameInput->text();
 
     //add desk user to database
+    if(globaldb){ //check if the database is connected
+        //pass values necessary to create a desk user
+        bool adduser_flag = globaldb->addDeskUser(username, firstname, lastname, age, email, password);
+
+        if(adduser_flag){
+            //notify user upon successful action
+            qDebug()<<"Desk user has been added to the database";
+
+            QMessageBox::information(this, tr("Desk User added"), tr("You can now login as this user"));
+            this->close();
+        }else{
+            QMessageBox::warning(this, tr("Cannot log in"), tr("Insert Query Failed. Try again"));
+        }
+    }else{ //database not connected
+        qDebug()<<"no database connection was set";
+        QMessageBox::warning(this, tr("Cannot log in"), tr("Could not connect to database"));
+    }
+
+    return;
 }
 

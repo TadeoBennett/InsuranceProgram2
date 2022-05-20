@@ -1,9 +1,11 @@
 #ifndef ADMINQUERIES_H
 #define ADMINQUERIES_H
 
-#include "Database.h"
+#include "Customer.h"
+#include "Administrator.h"
+#include "Desk.h"
 
-class AdminQueries: public Database
+class AdminQueries
 {
 public:
     AdminQueries();

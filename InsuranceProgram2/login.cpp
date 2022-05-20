@@ -1,7 +1,10 @@
 #include "login.h"
 #include "ui_login.h"
 
-extern bool loggedIn;
+extern bool loggedIn; //flag to check if a user is logged in
+extern Database* globaldb; //holds the database object
+
+extern BaseUserInfo * loggedInUser; //holds the values of the logged in user
 
 Login::Login(QWidget *parent)
     : QMainWindow(parent)
@@ -12,24 +15,16 @@ Login::Login(QWidget *parent)
     setCentralWidget(ui->groupBox);
 
     connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));  //about Qt
-    connect(ui->actionDeveloperInfo, SIGNAL(triggered()), this, SLOT(on_actionDeveloperInfo_triggered()));  //developer info
 
     //these slots are auto-connected
+    //connect(ui->actionDeveloperInfo, SIGNAL(triggered()), this, SLOT(on_actionDeveloperInfo_triggered()));  //developer info
     //connect(ui->actionCreateAccount, SIGNAL(triggered()), this, SLOT(on_actionCreateAccount_triggered()));  //show create account dialog
     //connect(ui->createaccountButton, SIGNAL(clicked()), this, SLOT(on_createaccountButton_clicked()));  //show create account dialog
 
 
 
-    //----------------------------------------------------- DISABLE ACTIONS IF THE USER IS NOT LOGGED IN
-    if(loggedIn == false){
-        ui->actionAdminActions->setEnabled(false);
-        ui->actionDeskActions->setEnabled(false);
-        ui->actionCustomerActions->setEnabled(false);
-    }else{
-        ui->actionAdminActions->setEnabled(true);
-        ui->actionDeskActions->setEnabled(true);
-        ui->actionCustomerActions->setEnabled(true);
-    }
+    //----- DISABLE/ENABLE ACTIONS IF THE USER IS/IS NOT LOGGED IN
+    updateLoginInterface();
 
 }
 
@@ -59,17 +54,41 @@ void Login::on_actionDeveloperInfo_triggered()
 
 void Login::on_loginButton_clicked()
 {
-    if(ui->usernameInput->text().trimmed().isEmpty()){
-        QMessageBox::warning(this, tr("Cannot log in"), tr("Username input is empty."));
+    if(ui->emailInput->text().trimmed().isEmpty()){
+        QMessageBox::warning(this, tr("Cannot log in"), tr("Email input is empty."));
+        return;
     }
 
     if(ui->passwordInput->text().trimmed().isEmpty()){
         QMessageBox::warning(this, tr("Cannot log in"), tr("Password input is empty."));
+        return;
     }
 
+    QString email = ui->emailInput->text().trimmed();
+    QString password = ui->passwordInput->text().trimmed();
 
-    //check if password and username exists in database
+    if(globaldb){ //check if the database is connected
+        //check if password and username exists in database(returns true if yes)
+        bool login_flag = globaldb->loginUser(email, password);
 
+        if(login_flag){
+            loggedIn = true; //setting the global logged in variable to true so this user may access the system
+            updateLoginInterface(); //update the interface
+
+            //create the menu
+            qDebug()<<"showing the menu to logged in user";
+            //....
+        }else{
+            QMessageBox::warning(this, tr("Cannot log in"), tr("Password/Email combination is incorrect."
+                                                               " If the problem persists and you are sure your "
+                                                               "credentials are correct, please contact the developer."));
+        }
+    }else{ //database not connected
+        qDebug()<<"no database connection was set";
+        QMessageBox::warning(this, tr("Cannot log in"), tr("Could not connect to database"));
+    }
+
+    return;
 }
 
 
@@ -84,5 +103,34 @@ void Login::on_actionCreateAccount_triggered()
 {
     CreateAccount * newAccountPage = new CreateAccount(this);
     newAccountPage->show();
+}
+
+void Login::updateLoginInterface()
+{
+    if(loggedIn == false){
+        ui->actionAdminActions->setEnabled(false);
+        ui->actionDeskActions->setEnabled(false);
+        ui->actionCustomerActions->setEnabled(false);
+    }else if(loggedIn){
+        int userlevelid = loggedInUser->get_userlevelid();
+
+        if(userlevelid == 1){
+            ui->actionAdminActions->setEnabled(true);
+            ui->actionDeskActions->setEnabled(false);
+            ui->actionCustomerActions->setEnabled(false);
+        }else if(userlevelid == 2){
+            ui->actionAdminActions->setEnabled(false);
+            ui->actionDeskActions->setEnabled(true);
+            ui->actionCustomerActions->setEnabled(false);
+        }else if(userlevelid == 3){
+            ui->actionAdminActions->setEnabled(false);
+            ui->actionDeskActions->setEnabled(false);
+            ui->actionCustomerActions->setEnabled(true);
+        }else{
+            ui->actionAdminActions->setEnabled(false);
+            ui->actionDeskActions->setEnabled(false);
+            ui->actionCustomerActions->setEnabled(false);
+        }
+    }
 }
 

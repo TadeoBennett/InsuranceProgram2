@@ -1,10 +1,11 @@
 #ifndef DESKQUERIES_H
 #define DESKQUERIES_H
 
-#include "Database.h"
+#include "Customer.h"
+#include "Administrator.h"
+#include "Desk.h"
 
-
-class DeskQueries: public Database
+class DeskQueries
 {
 public:
     DeskQueries();

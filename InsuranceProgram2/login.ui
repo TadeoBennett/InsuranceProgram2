@@ -12,14 +12,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>527</width>
-    <height>433</height>
+    <width>558</width>
+    <height>463</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>800</width>
-    <height>800</height>
+    <width>558</width>
+    <height>463</height>
    </size>
   </property>
   <property name="font">
@@ -28,7 +28,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Menu</string>
+   <string>Login</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{
@@ -80,6 +80,10 @@ QMenu::item:selected{
 background-color:  #404040;
 }
 
+QMessageBox::QPushButton{
+padding: 15px;
+}
+
 
 </string>
   </property>
@@ -102,7 +106,7 @@ background-color:  #404040;
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
-    <widget class="QLineEdit" name="usernameInput">
+    <widget class="QLineEdit" name="emailInput">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -120,7 +124,7 @@ background-color:  #404040;
       <string notr="true"/>
      </property>
      <property name="placeholderText">
-      <string>Username</string>
+      <string>Email</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="passwordInput">
