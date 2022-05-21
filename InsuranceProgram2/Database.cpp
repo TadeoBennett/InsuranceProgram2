@@ -23,8 +23,8 @@ Database::Database()
     }
 }
 
-QSqlDatabase Database::get_databaseStatus()
-{ return db; }
+bool Database::get_databaseStatus()
+{ return db.isOpen(); }
 
 bool Database::loginUser(QString em, QString pwd)
 {
@@ -103,5 +103,20 @@ bool Database::addDeskUser(QString uname, QString fname, QString lname, int a, Q
         qDebug()<<"select query failed";
     }
 
+    return false;
+}
+
+bool Database::changePassword(int userId, QString password)
+{
+    QSqlQuery changePassword;
+    changePassword.prepare("UPDATE user SET password = :pwd WHERE userid = :id");
+    changePassword.bindValue(":pwd", password);
+    changePassword.bindValue(":id", userId);
+
+    if(changePassword.exec()){
+        qDebug()<<"change password query executed successfully";
+        loggedInUser->set_password(password);
+        return true;
+    }
     return false;
 }

@@ -67,7 +67,7 @@ void Login::on_loginButton_clicked()
     QString email = ui->emailInput->text().trimmed();
     QString password = ui->passwordInput->text().trimmed();
 
-    if(globaldb){ //check if the database is connected
+    if(globaldb->get_databaseStatus()){ //check if the database is connected
         //check if password and username exists in database(returns true if yes)
         bool login_flag = globaldb->loginUser(email, password);
 
@@ -85,7 +85,7 @@ void Login::on_loginButton_clicked()
                                                                " If the problem persists and you are sure your "
                                                                "credentials are correct, please contact the developer."));
         }
-    }else{ //database not connected
+    }else if(globaldb->get_databaseStatus() == false){ //database not connected
         qDebug()<<"no database connection was set";
         QMessageBox::warning(this, tr("Cannot log in"), tr("Could not connect to database"));
     }

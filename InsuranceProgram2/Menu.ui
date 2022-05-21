@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1117</width>
-    <height>753</height>
+    <width>669</width>
+    <height>493</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>669</width>
+    <height>493</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>669</width>
+    <height>493</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Menu</string>
@@ -68,10 +80,27 @@ padding: 15px;
 }
 
 QLabel{
-color: #fff;
+	color: #fff;
 }
 
+QMessageBox QLabel {
+	color: #000000;
+}
 
+QInputDialog &gt; QLabel{
+	color:#000000;
+}
+
+QInputDialog &gt; QPushButton{
+	margin: 4px;
+	padding: 5px;
+}
+
+QInputDialog &gt; QLineEdit{
+	font-size: 13px;
+	padding: 5px;
+	border-radius: 0px;
+}
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -105,8 +134,8 @@ color: #fff;
    <widget class="QGroupBox" name="adminBox">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>60</y>
+      <x>80</x>
+      <y>70</y>
       <width>521</width>
       <height>331</height>
      </rect>
@@ -231,13 +260,186 @@ color: #fff;
      </property>
     </widget>
    </widget>
+   <widget class="QLabel" name="loadOptionsLabel">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>200</y>
+      <width>281</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cannot Load Options</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="deskBox">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>70</y>
+      <width>521</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label5">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>30</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="text">
+      <string>Desk Actions</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="newCustomerButton">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>150</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>New customer</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="renewPolicyButton">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>210</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Renew Policy</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="seeCustomerListButton">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>90</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>See Customer List</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="customerBox">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>70</y>
+      <width>521</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label3">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>30</y>
+       <width>121</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="text">
+      <string>Customer Actions</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="viewPolicyDetailsButton">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>90</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>View Policy Details</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label4">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>30</y>
+       <width>51</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="text">
+      <string>Reports</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="createInsuranceReportButton">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>90</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Create Insurance Report</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>adminBox</zorder>
+   <zorder>deskBox</zorder>
+   <zorder>customerBox</zorder>
+   <zorder>titleLabel</zorder>
+   <zorder>loadOptionsLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1117</width>
+     <width>669</width>
      <height>21</height>
     </rect>
    </property>
@@ -263,7 +465,7 @@ color: #fff;
      <property name="title">
       <string>Reports</string>
      </property>
-     <addaction name="actionRevenue_Report"/>
+     <addaction name="actionRevenueReport"/>
      <addaction name="actionInsuranceDistReport"/>
     </widget>
     <widget class="QMenu" name="menuEmployeeActions">
@@ -275,10 +477,16 @@ color: #fff;
      <addaction name="actionDeleteEmployee"/>
      <addaction name="actionSeeAllEmployees"/>
     </widget>
-    <addaction name="separator"/>
     <addaction name="actionCreateAccount"/>
     <addaction name="menuReports"/>
     <addaction name="menuEmployeeActions"/>
+    <addaction name="actionRenewPolicy"/>
+    <addaction name="actionCustomerList"/>
+    <addaction name="actionNewCustomer"/>
+    <addaction name="actionCreateInsurancesReport"/>
+    <addaction name="actionViewPolicyDetails"/>
+    <addaction name="actionLogout"/>
+    <addaction name="actionChangePassword"/>
    </widget>
    <addaction name="menuActions"/>
    <addaction name="menuLanguage"/>
@@ -322,7 +530,7 @@ color: #fff;
     <string>Create Account(desk only)</string>
    </property>
   </action>
-  <action name="actionRevenue_Report">
+  <action name="actionRevenueReport">
    <property name="text">
     <string>Revenue Report</string>
    </property>
@@ -368,6 +576,44 @@ color: #fff;
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+E</string>
+   </property>
+  </action>
+  <action name="actionChangePassword">
+   <property name="text">
+    <string>Change Password</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+P</string>
+   </property>
+  </action>
+  <action name="actionLogout">
+   <property name="text">
+    <string>Log out</string>
+   </property>
+  </action>
+  <action name="actionNewCustomer">
+   <property name="text">
+    <string>New Customer</string>
+   </property>
+  </action>
+  <action name="actionRenewPolicy">
+   <property name="text">
+    <string>Renew Policy</string>
+   </property>
+  </action>
+  <action name="actionCustomerList">
+   <property name="text">
+    <string>CustomerList</string>
+   </property>
+  </action>
+  <action name="actionCreateInsurancesReport">
+   <property name="text">
+    <string>Create Insurances Report</string>
+   </property>
+  </action>
+  <action name="actionViewPolicyDetails">
+   <property name="text">
+    <string>View Policy Details</string>
    </property>
   </action>
  </widget>

@@ -19,7 +19,7 @@ public:
 
     QSqlDatabase db;
 
-    QSqlDatabase get_databaseStatus();
+    bool get_databaseStatus();
 
     //returns true if the user has been logged in
     bool loginUser(QString em, QString pwd);
@@ -29,6 +29,9 @@ public:
 
     //returns true if a desk user was successfully added to the database
     bool addDeskUser(QString uname, QString fname, QString lname, int a, QString em, QString pwd);
+
+    //returns true the password for a current user has been changed
+    bool changePassword(int userId, QString password);
 
 };
 

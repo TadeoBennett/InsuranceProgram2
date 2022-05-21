@@ -17,7 +17,6 @@ InsuranceProgram::InsuranceProgram()
 //    db = new Database();
     globaldb = new Database();
 
-
 }
 
 void InsuranceProgram::execute()

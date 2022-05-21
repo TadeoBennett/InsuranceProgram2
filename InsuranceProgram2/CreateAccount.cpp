@@ -56,23 +56,21 @@ void CreateAccount::on_okButton_clicked()
         return;
     }
 
-    QString email = ui->emailInput->text().trimmed();
+    if(globaldb->get_databaseStatus()){
+        QString email = ui->emailInput->text().trimmed();
+        if(globaldb->checkEmail(email)){
+            qDebug()<<"email already exists";
+            QMessageBox::warning(this, tr("Cannot add user"), tr("User already exists with that email"));
+            return;
+        }
 
-    if(globaldb->checkEmail(email)){
-        qDebug()<<"email already exists";
-        QMessageBox::warning(this, tr("Cannot add user"), tr("User already exists with that email"));
-        return;
-    }
 
+        QString firstname = ui->firstnameInput->text().trimmed();
+        QString lastname = ui->lastnameInput->text().trimmed();
+        int age = ui->ageInput->value();
+        QString password = ui->passwordInput->text().trimmed();
+        QString username = ui->firstnameInput->text()[0] + ui->lastnameInput->text();
 
-    QString firstname = ui->firstnameInput->text().trimmed();
-    QString lastname = ui->lastnameInput->text().trimmed();
-    int age = ui->ageInput->value();
-    QString password = ui->passwordInput->text().trimmed();
-    QString username = ui->firstnameInput->text()[0] + ui->lastnameInput->text();
-
-    //add desk user to database
-    if(globaldb){ //check if the database is connected
         //pass values necessary to create a desk user
         bool adduser_flag = globaldb->addDeskUser(username, firstname, lastname, age, email, password);
 
@@ -85,11 +83,18 @@ void CreateAccount::on_okButton_clicked()
         }else{
             QMessageBox::warning(this, tr("Cannot log in"), tr("Insert Query Failed. Try again"));
         }
-    }else{ //database not connected
+    }else{
         qDebug()<<"no database connection was set";
         QMessageBox::warning(this, tr("Cannot log in"), tr("Could not connect to database"));
     }
 
+
     return;
+}
+
+
+void CreateAccount::on_cancelButton_clicked()
+{
+    this->close();
 }
 
