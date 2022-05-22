@@ -1,7 +1,9 @@
 #include "BaseUserInfo.h"
 
 BaseUserInfo::BaseUserInfo()
-{}
+{
+    set_userid(0);
+}
 
 BaseUserInfo::BaseUserInfo(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString em, QString pwd):
     userid(user_id), userlevelid(userlevel_id), username(uname), firstname(fname), lastname(lname), age(a), email(em), password(pwd)

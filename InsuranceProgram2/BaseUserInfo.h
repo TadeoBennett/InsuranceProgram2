@@ -41,6 +41,8 @@ public:
     int get_age();
     QString get_email();
     QString get_password();
+
+    virtual void cast(){} //helps with dynamic cast
 };
 
 #endif // BASEUSERINFO_H
