@@ -13,14 +13,18 @@ Menu::Menu(QWidget *parent) :
     ui->setupUi(this);
     setWindowIcon(QIcon(":/images/shield.ico"));
 
+    //General Actions
     connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(ui->actionDeveloperInfo, SIGNAL(triggered()), this, SLOT(showDeveloperInfo()));
     connect(ui->actionCreateAccount, SIGNAL(triggered()), this, SLOT(showCreateAccountForm()));
     connect(ui->actionLogout, SIGNAL(triggered()), this, SLOT(logoutuser()));
     connect(ui->actionChangePassword, SIGNAL(triggered()), this, SLOT(changePassword()));
 
-
-
+    //customer Actions
+    connect(ui->viewPolicyDetailsButton, SIGNAL(clicked()), this, SLOT(viewPolicyDetails()));
+    connect(ui->actionViewPolicyDetails, SIGNAL(triggered()), this, SLOT(viewPolicyDetails()));
+    connect(ui->actionCreateInsurancesReport, SIGNAL(triggered()), this, SLOT(createInsurancesReport()));
+    connect(ui->createInsuranceReportButton, SIGNAL(clicked()), this, SLOT(createInsurancesReport()));
 
 
     updateMenuInterface(); //load the right interface for the right usertype
@@ -34,13 +38,31 @@ Menu::~Menu()
 void Menu::updateMenuInterface()
 {
     if(loggedIn == false){
-//        ui->actionAdminActions->setVisible(false);
-//        ui->actionDeskActions->setVisible(false);
-//        ui->actionCustomerActions->setVisible(false);
+        qDebug()<<"not logged in";
+        //changes the main content of the window that holds the buttion options
+        ui->adminBox->setVisible(false);
+        ui->deskBox->setVisible(false);
+        ui->customerBox->setVisible(false);
+        ui->loadOptionsLabel->setVisible(false);
+
+        //admin menu actions
+        ui->menuActions->removeAction(ui->actionCreateAccount);
+        ui->menuReports->menuAction()->setVisible(false);
+        ui->menuEmployeeActions->menuAction()->setVisible(false);
+
+        //desk menu actions
+        ui->menuActions->removeAction(ui->actionRenewPolicy);
+        ui->menuActions->removeAction(ui->actionCustomerList);
+        ui->menuActions->removeAction(ui->actionNewCustomer);
+
+        //customer menu action
+        ui->menuActions->removeAction(ui->actionCreateInsurancesReport);
+        ui->menuActions->removeAction(ui->actionViewPolicyDetails);
     }else if(loggedIn){
         int userlevelid = loggedInUser->get_userlevelid();
 
         if(userlevelid == 1){
+            qDebug()<<"is an admin";
             //changes the main content of the window that holds the buttion options
             ui->adminBox->setVisible(true);
             ui->deskBox->setVisible(false);
@@ -48,20 +70,21 @@ void Menu::updateMenuInterface()
             ui->loadOptionsLabel->setVisible(false);
 
             //admin menu actions
-            ui->actionCreateAccount->setVisible(true);
-            ui->menuReports->setVisible(true);
-            ui->menuEmployeeActions->setVisible(true);
+            //ui->menuActions->removeAction(ui->actionCreateAccount);
+            ui->menuReports->menuAction()->setVisible(true);
+            ui->menuEmployeeActions->menuAction()->setVisible(true);
 
             //desk menu actions
-            ui->actionRenewPolicy->setVisible(false);
-            ui->actionCustomerList->setVisible(false);
-            ui->actionNewCustomer->setVisible(false);
+            ui->menuActions->removeAction(ui->actionRenewPolicy);
+            ui->menuActions->removeAction(ui->actionCustomerList);
+            ui->menuActions->removeAction(ui->actionNewCustomer);
 
             //customer menu action
-            ui->actionCreateInsurancesReport->setVisible(false);
-            ui->actionViewPolicyDetails->setVisible(false);
+            ui->menuActions->removeAction(ui->actionCreateInsurancesReport);
+            ui->menuActions->removeAction(ui->actionViewPolicyDetails);
 
         }else if(userlevelid == 2){
+            qDebug()<<"is a desk";
             //changes the main content of the window that holds the buttion options
             ui->adminBox->setVisible(false);
             ui->deskBox->setVisible(true);
@@ -69,9 +92,9 @@ void Menu::updateMenuInterface()
             ui->loadOptionsLabel->setVisible(false);
 
             //admin menu actions
-            ui->actionCreateAccount->setVisible(true);
-            ui->menuReports->setVisible(false);
-            ui->menuEmployeeActions->setVisible(false);
+            //ui->menuActions->removeAction(ui->actionCreateAccount);
+            ui->menuReports->menuAction()->setVisible(false);
+            ui->menuEmployeeActions->menuAction()->setVisible(false);
 
             //desk menu actions
             ui->actionRenewPolicy->setVisible(true);
@@ -79,10 +102,11 @@ void Menu::updateMenuInterface()
             ui->actionNewCustomer->setVisible(true);
 
             //customer menu action
-            ui->actionCreateInsurancesReport->setVisible(false);
-            ui->actionViewPolicyDetails->setVisible(false);
+            ui->menuActions->removeAction(ui->actionCreateInsurancesReport);
+            ui->menuActions->removeAction(ui->actionViewPolicyDetails);
 
         }else if(userlevelid == 3){
+            qDebug()<<"is a customer";
             //changes the main content of the window that holds the buttion options
             ui->adminBox->setVisible(false);
             ui->deskBox->setVisible(false);
@@ -90,20 +114,21 @@ void Menu::updateMenuInterface()
             ui->loadOptionsLabel->setVisible(false);
 
             //admin menu actions
-            ui->actionCreateAccount->setVisible(false);
-            ui->menuReports->setVisible(false);
-            ui->menuEmployeeActions->setVisible(false);
+            ui->menuActions->removeAction(ui->actionCreateAccount);
+            ui->menuReports->menuAction()->setVisible(false);
+            ui->menuEmployeeActions->menuAction()->setVisible(false);
 
             //desk menu actions
-            ui->actionRenewPolicy->setVisible(false);
-            ui->actionCustomerList->setVisible(false);
-            ui->actionNewCustomer->setVisible(false);
+            ui->menuActions->removeAction(ui->actionRenewPolicy);
+            ui->menuActions->removeAction(ui->actionCustomerList);
+            ui->menuActions->removeAction(ui->actionNewCustomer);
 
             //customer menu action
             ui->actionCreateInsurancesReport->setVisible(true);
             ui->actionViewPolicyDetails->setVisible(true);
 
         }else{
+            qDebug()<<"no userlevel read";
             //changes the main content of the window that holds the buttion options
             ui->adminBox->setVisible(false);
             ui->deskBox->setVisible(false);
@@ -111,18 +136,18 @@ void Menu::updateMenuInterface()
             ui->loadOptionsLabel->setVisible(true);
 
             //admin menu actions
-            ui->actionCreateAccount->setVisible(false);
-            ui->menuReports->setVisible(false);
-            ui->menuEmployeeActions->setVisible(false);
+            ui->menuActions->removeAction(ui->actionCreateAccount);
+            ui->menuReports->menuAction()->setVisible(false);
+            ui->menuEmployeeActions->menuAction()->setVisible(false);
 
             //desk menu actions
-            ui->actionRenewPolicy->setVisible(false);
-            ui->actionCustomerList->setVisible(false);
-            ui->actionNewCustomer->setVisible(false);
+            ui->menuActions->removeAction(ui->actionRenewPolicy);
+            ui->menuActions->removeAction(ui->actionCustomerList);
+            ui->menuActions->removeAction(ui->actionNewCustomer);
 
             //customer menu action
-            ui->actionCreateInsurancesReport->setVisible(false);
-            ui->actionViewPolicyDetails->setVisible(false);
+            ui->menuActions->removeAction(ui->actionCreateInsurancesReport);
+            ui->menuActions->removeAction(ui->actionViewPolicyDetails);
         }
     }
 }
@@ -181,6 +206,17 @@ void Menu::changePassword()
             return;
         }
     }//end if
+}
+
+void Menu::viewPolicyDetails()
+{
+    PolicyDetailsView* insurancesForm = new PolicyDetailsView(this);
+    insurancesForm->show();
+}
+
+void Menu::createInsurancesReport()
+{
+    qDebug()<<"Report created";
 }
 
 void Menu::showDeveloperInfo()

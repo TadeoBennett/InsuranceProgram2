@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include "CreateAccount.h"
 #include "Login.h"
+#include "PolicyDetailsView.h"
 
 #include "Administrator.h"
 #include "Desk.h"
@@ -32,6 +33,8 @@ private slots:
     void showCreateAccountForm();
     void logoutuser();
     void changePassword();
+    void viewPolicyDetails();
+    void createInsurancesReport();
 
 private:
     Ui::Menu *ui;

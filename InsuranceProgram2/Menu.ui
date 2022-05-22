@@ -101,6 +101,14 @@ QInputDialog &gt; QLineEdit{
 	padding: 5px;
 	border-radius: 0px;
 }
+/* ---------------------------*/
+QDialog &gt; QLabel{
+	color: #000000;
+}
+
+QDialog &gt; QPushButton{
+	padding: 5px;
+}
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -462,6 +470,9 @@ QInputDialog &gt; QLineEdit{
      <string>Actions</string>
     </property>
     <widget class="QMenu" name="menuReports">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="title">
       <string>Reports</string>
      </property>
@@ -478,8 +489,8 @@ QInputDialog &gt; QLineEdit{
      <addaction name="actionSeeAllEmployees"/>
     </widget>
     <addaction name="actionCreateAccount"/>
-    <addaction name="menuReports"/>
     <addaction name="menuEmployeeActions"/>
+    <addaction name="menuReports"/>
     <addaction name="actionRenewPolicy"/>
     <addaction name="actionCustomerList"/>
     <addaction name="actionNewCustomer"/>

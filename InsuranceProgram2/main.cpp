@@ -1,4 +1,5 @@
 #include "InsuranceProgram.h"
+#include "PolicyDetailsView.h"
 #include <QApplication>
 
 bool loggedIn = false; //flag to check if a user is logged in
@@ -17,6 +18,9 @@ int main(int argc, char *argv[])
 
     InsuranceProgram * ip2 = new InsuranceProgram;
     ip2->execute();
+//    PolicyDetailsView * pdv = new PolicyDetailsView();
+//    pdv->show();
+
 
     return a.exec();
 }

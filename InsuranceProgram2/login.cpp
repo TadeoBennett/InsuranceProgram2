@@ -110,28 +110,28 @@ void Login::on_actionCreateAccount_triggered()
 void Login::updateLoginInterface()
 {
     if(loggedIn == false){
-        ui->actionAdminActions->setVisible(false);
-        ui->actionDeskActions->setVisible(false);
-        ui->actionCustomerActions->setVisible(false);
+        ui->menuActions->removeAction(ui->actionAdminActions);
+        ui->menuActions->removeAction(ui->actionDeskActions);
+        ui->menuActions->removeAction(ui->actionCustomerActions);
     }else if(loggedIn){
         int userlevelid = loggedInUser->get_userlevelid();
 
         if(userlevelid == 1){
-            ui->actionAdminActions->setVisible(true);
-            ui->actionDeskActions->setVisible(false);
-            ui->actionCustomerActions->setVisible(false);
+            //ui->menuActions->removeAction(ui->actionAdminActions);
+            ui->menuActions->removeAction(ui->actionDeskActions);
+            ui->menuActions->removeAction(ui->actionCustomerActions);
         }else if(userlevelid == 2){
-            ui->actionAdminActions->setVisible(false);
-            ui->actionDeskActions->setVisible(true);
-            ui->actionCustomerActions->setVisible(false);
+            ui->menuActions->removeAction(ui->actionAdminActions);
+            //ui->menuActions->removeAction(ui->actionDeskActions);
+            ui->menuActions->removeAction(ui->actionCustomerActions);
         }else if(userlevelid == 3){
-            ui->actionAdminActions->setVisible(false);
-            ui->actionDeskActions->setVisible(false);
-            ui->actionCustomerActions->setVisible(true);
+            ui->menuActions->removeAction(ui->actionAdminActions);
+            ui->menuActions->removeAction(ui->actionDeskActions);
+            //ui->menuActions->removeAction(ui->actionCustomerActions);
         }else{
-            ui->actionAdminActions->setVisible(false);
-            ui->actionDeskActions->setVisible(false);
-            ui->actionCustomerActions->setVisible(false);
+            ui->menuActions->removeAction(ui->actionAdminActions);
+            ui->menuActions->removeAction(ui->actionDeskActions);
+            ui->menuActions->removeAction(ui->actionCustomerActions);
         }
     }
 }
