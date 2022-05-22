@@ -4,6 +4,7 @@ Insurance::Insurance()
 {
     //if any insurance was created with a non-inherited constructor set the enabled variable as false
     enabled = false;
+    set_insuranceid(0);
 }
 
 Insurance::Insurance(int id, float mpayment, int mpaid, int mlimit):

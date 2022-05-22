@@ -24,6 +24,7 @@ SOURCES += \
     InsuranceProgram.cpp \
     LifeInsurance.cpp \
     Menu.cpp \
+    PolicyDetailsView.cpp \
     login.cpp \
     main.cpp
 
@@ -43,11 +44,13 @@ HEADERS += \
     InsuranceProgram.h \
     LifeInsurance.h \
     Menu.h \
+    PolicyDetailsView.h \
     login.h
 
 FORMS += \
     CreateAccount.ui \
     Menu.ui \
+    PolicyDetailsView.ui \
     login.ui
 
 # Default rules for deployment.
