@@ -19,6 +19,7 @@ private:
     bool entrepreneur;
     QString peopleathome;
 
+public:
     //setters
     void set_address(QString add);
     void set_maritalstatus(QString mar_status);

@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>949</width>
-    <height>681</height>
+    <height>671</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,7 +40,7 @@ QDialog{
      <x>40</x>
      <y>60</y>
      <width>871</width>
-     <height>600</height>
+     <height>571</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -69,13 +69,13 @@ padding: 10px;
       <x>0</x>
       <y>0</y>
       <width>835</width>
-      <height>578</height>
+      <height>549</height>
      </rect>
     </property>
     <property name="autoFillBackground">
      <bool>true</bool>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -131,28 +131,28 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLineEdit" name="lineEdit_33">
+          <widget class="QLineEdit" name="firstname">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_40">
+          <widget class="QLineEdit" name="middlename">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="2">
-          <widget class="QLineEdit" name="lineEdit_36">
+          <widget class="QLineEdit" name="lastname">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="3">
-          <widget class="QLineEdit" name="lineEdit_39">
+          <widget class="QLineEdit" name="age">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -180,21 +180,21 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="3" column="0">
-          <widget class="QLineEdit" name="lineEdit_37">
+          <widget class="QLineEdit" name="phoneNumber">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="lineEdit_8">
+          <widget class="QLineEdit" name="socialsecuritynumber">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="3" column="2">
-          <widget class="QLineEdit" name="lineEdit_38">
+          <widget class="QLineEdit" name="citizenship">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -236,21 +236,21 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="1" column="2" colspan="2">
-          <widget class="QLineEdit" name="lineEdit_41">
+          <widget class="QLineEdit" name="maritalstatus">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="4">
-          <widget class="QLineEdit" name="lineEdit_42">
+          <widget class="QLineEdit" name="petowner">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="5">
-          <widget class="QLineEdit" name="lineEdit_47">
+          <widget class="QLineEdit" name="entrepreneur">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -278,21 +278,21 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="3" column="0">
-          <widget class="QLineEdit" name="lineEdit_44">
+          <widget class="QLineEdit" name="home_monthlypayment">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="lineEdit_45">
+          <widget class="QLineEdit" name="home_monthspaid">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="3" column="2" colspan="2">
-          <widget class="QLineEdit" name="lineEdit_46">
+          <widget class="QLineEdit" name="home_monthduration">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -313,14 +313,14 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="5" column="0" colspan="3">
-          <widget class="QTextEdit" name="textEdit_9">
+          <widget class="QTextEdit" name="homeimprovements">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="5" column="3" colspan="3">
-          <widget class="QTextEdit" name="textEdit_10">
+          <widget class="QTextEdit" name="peopleathome">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -334,7 +334,7 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="1" column="0" colspan="2">
-          <widget class="QLineEdit" name="lineEdit_43">
+          <widget class="QLineEdit" name="address">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -390,35 +390,35 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLineEdit" name="lineEdit_57">
+          <widget class="QLineEdit" name="salary">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_48">
+          <widget class="QLineEdit" name="occupation">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="2" colspan="2">
-          <widget class="QLineEdit" name="lineEdit_56">
+          <widget class="QLineEdit" name="feloncharges">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="4">
-          <widget class="QLineEdit" name="lineEdit_49">
+          <widget class="QLineEdit" name="misdemeanorcharges">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="5">
-          <widget class="QLineEdit" name="lineEdit_54">
+          <widget class="QLineEdit" name="druguser">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -463,35 +463,35 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="3" column="0">
-          <widget class="QLineEdit" name="lineEdit_55">
+          <widget class="QLineEdit" name="height">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="lineEdit_52">
+          <widget class="QLineEdit" name="weight">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="3" column="2" colspan="2">
-          <widget class="QLineEdit" name="lineEdit_50">
+          <widget class="QLineEdit" name="life_monthlypayment">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="3" column="4">
-          <widget class="QLineEdit" name="lineEdit_53">
+          <widget class="QLineEdit" name="life_monthspaid">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="3" column="5">
-          <widget class="QLineEdit" name="lineEdit_51">
+          <widget class="QLineEdit" name="life_monthduration">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -512,14 +512,14 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="5" column="0" colspan="3">
-          <widget class="QTextEdit" name="textEdit_13">
+          <widget class="QTextEdit" name="beneficiaries">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="5" column="3" colspan="3">
-          <widget class="QTextEdit" name="textEdit_12">
+          <widget class="QTextEdit" name="highriskhobbies">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -540,14 +540,14 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="7" column="0" colspan="3">
-          <widget class="QTextEdit" name="textEdit_14">
+          <widget class="QTextEdit" name="physiciandetails">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="7" column="3" colspan="3">
-          <widget class="QTextEdit" name="textEdit_11">
+          <widget class="QTextEdit" name="seriousdiagnoses">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -603,35 +603,35 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLineEdit" name="lineEdit_59">
+          <widget class="QLineEdit" name="make">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_65">
+          <widget class="QLineEdit" name="model">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="2" colspan="2">
-          <widget class="QLineEdit" name="lineEdit_61">
+          <widget class="QLineEdit" name="licensenumber">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="4">
-          <widget class="QLineEdit" name="lineEdit_64">
+          <widget class="QLineEdit" name="vehicleidnumber">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="5">
-          <widget class="QLineEdit" name="lineEdit_62">
+          <widget class="QLineEdit" name="year">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -666,28 +666,28 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="3" column="0">
-          <widget class="QLineEdit" name="lineEdit_66">
+          <widget class="QLineEdit" name="annualmiles">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="lineEdit_58">
+          <widget class="QLineEdit" name="car_monthlypayment">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="3" column="2" colspan="2">
-          <widget class="QLineEdit" name="lineEdit_60">
+          <widget class="QLineEdit" name="car_monthspaid">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="3" column="4">
-          <widget class="QLineEdit" name="lineEdit_63">
+          <widget class="QLineEdit" name="car_monthduration">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -708,14 +708,14 @@ padding-top: 10px;
           </widget>
          </item>
          <item row="5" column="0" colspan="3">
-          <widget class="QTextEdit" name="textEdit_16">
+          <widget class="QTextEdit" name="safetyfeatures">
            <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="5" column="3" colspan="3">
-          <widget class="QTextEdit" name="textEdit_15">
+          <widget class="QTextEdit" name="antitheftdevices">
            <property name="enabled">
             <bool>false</bool>
            </property>

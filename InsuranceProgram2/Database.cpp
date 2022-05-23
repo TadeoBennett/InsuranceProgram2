@@ -113,8 +113,7 @@ bool Database::loginUser(QString em, QString pwd)
 
                     }//end adding home insurance details
 
-
-
+                    //creating carinsurance details if any
                     if((carinsuranceid != 0)){
                         QSqlQuery getCarInsuranceDetails;
                         getCarInsuranceDetails.prepare("SELECT * FROM carinsurance WHERE carinsuranceid = :id");
@@ -139,7 +138,6 @@ bool Database::loginUser(QString em, QString pwd)
                                 monthlypayment = rec.value("monthlypayment").toFloat(); // value of the field "monthlypayment"
                                 monthspaid = rec.value("monthspaid").toInt(); // value of the field "monthspaid"
                                 monthlimit = rec.value("monthlimit").toInt(); // value of the field "homeinsuranceid"
-
                             }
                             //create copy of loggedInUser object and cast it to a customer object; then add the insurance details to that object;
                             //then make the loggedInUser object be a copy of the created customer object
@@ -152,16 +150,44 @@ bool Database::loginUser(QString em, QString pwd)
 
                     }//end adding car insurance details
 
+                    //creating lifeinsurance details if any
+                    if((lifeinsuranceid != 0)){
+                        QSqlQuery getLifeInsuranceDetails;
+                        getLifeInsuranceDetails.prepare("SELECT * FROM lifeinsurance WHERE lifeinsuranceid = :id");
+                        getLifeInsuranceDetails.bindValue(":id", lifeinsuranceid);
 
+                        //variables to save the query values
+                        float salary, monthlypayment; int monthspaid, monthlimit;
+                        QString occupation, beneficiaries, highriskhobbies, height, weight, physiciandetails, seriousdiagnoses;
+                        bool feloncharges, misdemeanorcharges, druguser;
 
-
-
-
-
-
-
-
-
+                        if(getLifeInsuranceDetails.exec()){
+                            while(getLifeInsuranceDetails.next()){
+                                QSqlRecord rec = getLifeInsuranceDetails.record();
+                                salary = rec.value("salary").toFloat(); // value of the field "salary"
+                                occupation = rec.value("occupation").toString(); // value of the field "occupation"
+                                beneficiaries = rec.value("beneficiaries").toString(); // value of the field "beneficiaries"
+                                feloncharges = rec.value("feloncharges").toBool(); // value of the field "feloncharges"
+                                misdemeanorcharges = rec.value("misdemeanorcharges").toBool(); // value of the field "misdemeanorcharges"
+                                druguser = rec.value("druguser").toBool(); // value of the field "druguser"
+                                highriskhobbies = rec.value("highriskhobbies").toString(); // value of the field "highriskhobbies"
+                                height = rec.value("height").toString(); // value of the field "height"
+                                weight = rec.value("weight").toString(); // value of the field "weight"
+                                physiciandetails = rec.value("physiciandetails").toString(); // value of the field "physiciandetails"
+                                seriousdiagnoses = rec.value("make").toString(); // value of the field "make"
+                                monthlypayment = rec.value("monthlypayment").toFloat(); // value of the field "monthlypayment"
+                                monthspaid = rec.value("monthspaid").toInt(); // value of the field "monthspaid"
+                                monthlimit = rec.value("monthlimit").toInt(); // value of the field "homeinsuranceid"
+                            }
+                            //create copy of loggedInUser object and cast it to a customer object; then add the insurance details to that object;
+                            //then make the loggedInUser object be a copy of the created customer object
+                            Customer* newCustomer  = dynamic_cast<Customer*>(loggedInUser);
+                            newCustomer->insuranceList[2] = new LifeInsurance(salary, occupation, beneficiaries, feloncharges, misdemeanorcharges, druguser, highriskhobbies, height, weight, physiciandetails, seriousdiagnoses, /**/userid, monthlypayment, monthspaid, monthlimit);
+                            loggedInUser = newCustomer;
+                        }else{
+                            qDebug()<<"get life insurance details query failed";
+                        }
+                    }//end adding life insurance details
                 }
             }//end checking userlevel
             return true;

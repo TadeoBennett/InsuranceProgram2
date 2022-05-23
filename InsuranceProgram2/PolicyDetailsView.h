@@ -2,6 +2,12 @@
 #define POLICYDETAILSVIEW_H
 
 #include <QDialog>
+#include <QString>
+#include "Customer.h"
+#include "CarInsurance.h"
+#include "HomeInsurance.h"
+#include "LifeInsurance.h"
+
 
 namespace Ui {
 class PolicyDetailsView;
