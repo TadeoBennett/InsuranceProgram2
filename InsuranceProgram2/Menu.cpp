@@ -16,7 +16,6 @@ Menu::Menu(QWidget *parent) :
     //General Actions
     connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(ui->actionDeveloperInfo, SIGNAL(triggered()), this, SLOT(showDeveloperInfo()));
-    connect(ui->actionCreateAccount, SIGNAL(triggered()), this, SLOT(showCreateAccountForm()));
     connect(ui->actionLogout, SIGNAL(triggered()), this, SLOT(logoutuser()));
     connect(ui->actionChangePassword, SIGNAL(triggered()), this, SLOT(changePassword()));
 
@@ -25,6 +24,18 @@ Menu::Menu(QWidget *parent) :
     connect(ui->actionViewPolicyDetails, SIGNAL(triggered()), this, SLOT(viewPolicyDetails()));
     connect(ui->actionCreateInsurancesReport, SIGNAL(triggered()), this, SLOT(createInsurancesReport()));
     connect(ui->createInsuranceReportButton, SIGNAL(clicked()), this, SLOT(createInsurancesReport()));
+
+    //admin actions
+    connect(ui->actionAddEmployee, SIGNAL(triggered()), this, SLOT(showCreateAccountForm()));
+    connect(ui->addEmployeeButton, SIGNAL(clicked()), this, SLOT(showCreateAccountForm()));
+    connect(ui->revenueReportButton, SIGNAL(clicked()), this, SLOT(createRevenueReport())); //Report1
+    connect(ui->actionRevenueReport, SIGNAL(triggered()), this, SLOT(createRevenueReport()));
+    connect(ui->insuranceDistributionReportButton, SIGNAL(clicked()), this, SLOT(createInsuranceDistributionReport())); //Report2
+    connect(ui->actionInsuranceDistReport, SIGNAL(triggered()), this, SLOT(createInsuranceDistributionReport()));
+    connect(ui->seeAllEmployeesButton, SIGNAL(clicked()), this, SLOT(showEmployeeList()));
+    connect(ui->actionSeeAllEmployees, SIGNAL(triggered()), this, SLOT(showEmployeeList()));
+connect(ui->editEmployeeButton, SIGNAL(clicked()), this, SLOT(showEmployeeList()));
+connect(ui->actionEditEmployee, SIGNAL(triggered()), this, SLOT(showEmployeeList()));
 
 
     updateMenuInterface(); //load the right interface for the right usertype
@@ -70,7 +81,7 @@ void Menu::updateMenuInterface()
             ui->loadOptionsLabel->setVisible(false);
 
             //admin menu actions
-            //ui->menuActions->removeAction(ui->actionCreateAccount);
+            ui->menuActions->removeAction(ui->actionCreateAccount);
             ui->menuReports->menuAction()->setVisible(true);
             ui->menuEmployeeActions->menuAction()->setVisible(true);
 
@@ -92,7 +103,7 @@ void Menu::updateMenuInterface()
             ui->loadOptionsLabel->setVisible(false);
 
             //admin menu actions
-            //ui->menuActions->removeAction(ui->actionCreateAccount);
+            ui->menuActions->removeAction(ui->actionCreateAccount);
             ui->menuReports->menuAction()->setVisible(false);
             ui->menuEmployeeActions->menuAction()->setVisible(false);
 
@@ -216,7 +227,40 @@ void Menu::viewPolicyDetails()
 
 void Menu::createInsurancesReport()
 {
-    qDebug()<<"Report created";
+    qDebug()<<"Insurances Report created";
+}
+
+void Menu::createRevenueReport()
+{
+    qDebug()<<"Revenue Report created";
+}
+
+void Menu::createInsuranceDistributionReport()
+{
+    qDebug()<<"Insurance Distribution Report created";
+}
+
+void Menu::showEmployeeList()
+{
+    qDebug()<<"showing list of employees";
+
+    QDialog* employeeList = new QDialog(this);
+    QVBoxLayout* layout = new QVBoxLayout;
+
+    QTableView* tableView = new QTableView();
+    tableView->setModel(globaldb->getEmployeeListModel()); //set the table view the model that contains a list of all employees in the database
+
+    layout->addWidget(tableView); //add the tableView to the layout
+
+    employeeList->setLayout(layout); //make the QDialog have the layout which contains the table of employees
+    employeeList->setGeometry(0, 0, 1100, 500); //setting the window geometry
+    employeeList->setWindowTitle("Employee List");
+    employeeList->open(); //show the QDialog as a modal window
+}
+
+void Menu::editEmployee()
+{
+    //create form to edit employee
 }
 
 void Menu::showDeveloperInfo()

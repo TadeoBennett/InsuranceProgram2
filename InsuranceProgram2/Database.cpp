@@ -251,3 +251,10 @@ bool Database::changePassword(int userId, QString password)
     }
     return false;
 }
+
+QSqlQueryModel* Database::getEmployeeListModel()
+{
+    QSqlQueryModel* newModel = new QSqlQueryModel();
+    newModel->setQuery("SELECT * FROM user WHERE userlevelid = 2");
+    return newModel;
+}

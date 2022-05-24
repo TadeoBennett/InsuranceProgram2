@@ -2,8 +2,12 @@
 #define MENU_H
 
 #include <QMainWindow>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QInputDialog>
 #include <QLineEdit>
+#include <QTableView>
 #include "CreateAccount.h"
 #include "Login.h"
 #include "PolicyDetailsView.h"
@@ -30,11 +34,19 @@ public:
 
 private slots:
     void showDeveloperInfo();
-    void showCreateAccountForm();
+    void showCreateAccountForm(); //only admins this one
     void logoutuser();
     void changePassword();
+
+    //customer
     void viewPolicyDetails();
     void createInsurancesReport();
+
+    //admin
+    void createRevenueReport();
+    void createInsuranceDistributionReport();
+    void showEmployeeList();
+    void editEmployee();
 
 private:
     Ui::Menu *ui;

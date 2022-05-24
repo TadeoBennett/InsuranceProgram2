@@ -33,6 +33,8 @@ public:
     //returns true the password for a current user has been changed
     bool changePassword(int userId, QString password);
 
+    QSqlQueryModel* getEmployeeListModel();
+
 };
 
 #endif // DATABASE_H

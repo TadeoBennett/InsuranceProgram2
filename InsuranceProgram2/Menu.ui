@@ -235,19 +235,6 @@ QDialog &gt; QPushButton{
       <string>Insurance Distribution Report</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="deleteEmployeeButton">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>260</y>
-       <width>171</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Delete Employee</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label2">
      <property name="geometry">
       <rect>
@@ -436,11 +423,16 @@ QDialog &gt; QPushButton{
      </property>
     </widget>
    </widget>
-   <zorder>adminBox</zorder>
    <zorder>deskBox</zorder>
-   <zorder>customerBox</zorder>
    <zorder>titleLabel</zorder>
    <zorder>loadOptionsLabel</zorder>
+   <zorder>label</zorder>
+   <zorder>lineEdit</zorder>
+   <zorder></zorder>
+   <zorder>label_2</zorder>
+   <zorder>lineEdit_2</zorder>
+   <zorder>customerBox</zorder>
+   <zorder>adminBox</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -485,7 +477,6 @@ QDialog &gt; QPushButton{
      </property>
      <addaction name="actionAddEmployee"/>
      <addaction name="actionEditEmployee"/>
-     <addaction name="actionDeleteEmployee"/>
      <addaction name="actionSeeAllEmployees"/>
     </widget>
     <addaction name="actionCreateAccount"/>
@@ -571,14 +562,6 @@ QDialog &gt; QPushButton{
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+A</string>
-   </property>
-  </action>
-  <action name="actionDeleteEmployee">
-   <property name="text">
-    <string>Delete Employee</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+D</string>
    </property>
   </action>
   <action name="actionEditEmployee">
