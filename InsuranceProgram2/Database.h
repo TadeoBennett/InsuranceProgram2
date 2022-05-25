@@ -33,7 +33,14 @@ public:
     //returns true the password for a current user has been changed
     bool changePassword(int userId, QString password);
 
+    //return a model of the list of employees and admins in the database
     QSqlQueryModel* getEmployeeListModel();
+
+    //returns true if a user was deleted
+    bool deleteUser(int userid);
+
+    //returns true if a user was updated
+    bool updateUser(int userid, int userlevelid, QString username, QString firstname, QString lastname, int age, QString email, int status);
 
 };
 

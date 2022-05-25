@@ -151,7 +151,7 @@ QDialog &gt; QPushButton{
     <property name="title">
      <string/>
     </property>
-    <widget class="QLabel" name="label1">
+    <widget class="QLabel" name="employeeActionsLabel">
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -235,7 +235,7 @@ QDialog &gt; QPushButton{
       <string>Insurance Distribution Report</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label2">
+    <widget class="QLabel" name="adminReportsLabel">
      <property name="geometry">
       <rect>
        <x>360</x>
@@ -287,7 +287,7 @@ QDialog &gt; QPushButton{
     <property name="title">
      <string/>
     </property>
-    <widget class="QLabel" name="label5">
+    <widget class="QLabel" name="deskActionsLabel">
      <property name="geometry">
       <rect>
        <x>210</x>
@@ -358,7 +358,7 @@ QDialog &gt; QPushButton{
     <property name="title">
      <string/>
     </property>
-    <widget class="QLabel" name="label3">
+    <widget class="QLabel" name="customerActionsLabel">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -390,7 +390,7 @@ QDialog &gt; QPushButton{
       <string>View Policy Details</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label4">
+    <widget class="QLabel" name="customerReportsLabel">
      <property name="geometry">
       <rect>
        <x>360</x>
@@ -423,6 +423,7 @@ QDialog &gt; QPushButton{
      </property>
     </widget>
    </widget>
+   <zorder>adminBox</zorder>
    <zorder>deskBox</zorder>
    <zorder>titleLabel</zorder>
    <zorder>loadOptionsLabel</zorder>
@@ -432,7 +433,6 @@ QDialog &gt; QPushButton{
    <zorder>label_2</zorder>
    <zorder>lineEdit_2</zorder>
    <zorder>customerBox</zorder>
-   <zorder>adminBox</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

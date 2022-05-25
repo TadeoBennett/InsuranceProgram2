@@ -85,7 +85,7 @@ void CreateAccount::on_okButton_clicked()
         }
     }else{
         qDebug()<<"no database connection was set";
-        QMessageBox::warning(this, tr("Cannot log in"), tr("Could not connect to database"));
+        QMessageBox::critical(this, tr("Cannot log in"), tr("Could not connect to database"));
     }
 
 

@@ -19,6 +19,7 @@ SOURCES += \
     Database.cpp \
     Desk.cpp \
     DeskQueries.cpp \
+    EditEmployeeForm.cpp \
     HomeInsurance.cpp \
     Insurance.cpp \
     InsuranceProgram.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     Database.h \
     Desk.h \
     DeskQueries.h \
+    EditEmployeeForm.h \
     HomeInsurance.h \
     Insurance.h \
     InsuranceProgram.h \
@@ -49,6 +51,7 @@ HEADERS += \
 
 FORMS += \
     CreateAccount.ui \
+    EditEmployeeForm.ui \
     Menu.ui \
     PolicyDetailsView.ui \
     login.ui

@@ -87,7 +87,7 @@ void Login::on_loginButton_clicked()
         }
     }else if(globaldb->get_databaseStatus() == false){ //database not connected
         qDebug()<<"no database connection was set";
-        QMessageBox::warning(this, tr("Cannot log in"), tr("Could not connect to database"));
+        QMessageBox::critical(this, tr("Cannot log in"), tr("Could not connect to database"));
     }
 
     return;

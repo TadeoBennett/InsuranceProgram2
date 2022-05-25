@@ -34,8 +34,8 @@ Menu::Menu(QWidget *parent) :
     connect(ui->actionInsuranceDistReport, SIGNAL(triggered()), this, SLOT(createInsuranceDistributionReport()));
     connect(ui->seeAllEmployeesButton, SIGNAL(clicked()), this, SLOT(showEmployeeList()));
     connect(ui->actionSeeAllEmployees, SIGNAL(triggered()), this, SLOT(showEmployeeList()));
-connect(ui->editEmployeeButton, SIGNAL(clicked()), this, SLOT(showEmployeeList()));
-connect(ui->actionEditEmployee, SIGNAL(triggered()), this, SLOT(showEmployeeList()));
+    connect(ui->editEmployeeButton, SIGNAL(clicked()), this, SLOT(editEmployee()));
+    connect(ui->actionEditEmployee, SIGNAL(triggered()), this, SLOT(editEmployee()));
 
 
     updateMenuInterface(); //load the right interface for the right usertype
@@ -166,7 +166,7 @@ void Menu::updateMenuInterface()
 void Menu::showCreateAccountForm()
 {
     CreateAccount * newAccountPage = new CreateAccount(this);
-    newAccountPage->show();
+    newAccountPage->open();
 }
 
 void Menu::logoutuser()
@@ -191,7 +191,7 @@ void Menu::changePassword()
 
 
     if(ok){ //a password was specified
-        if(!password.isEmpty()){
+        if(!password.trimmed().isEmpty()){
             qDebug()<<"valid password";
             if(globaldb->get_databaseStatus()){ //check if the database is connected
                 //check if the password was changed successfully
@@ -260,7 +260,9 @@ void Menu::showEmployeeList()
 
 void Menu::editEmployee()
 {
-    //create form to edit employee
+    //create form to edit/delete employee
+    EditEmployeeForm* newForm = new EditEmployeeForm(this);
+    newForm->open();
 }
 
 void Menu::showDeveloperInfo()

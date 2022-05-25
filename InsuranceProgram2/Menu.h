@@ -11,6 +11,7 @@
 #include "CreateAccount.h"
 #include "Login.h"
 #include "PolicyDetailsView.h"
+#include "EditEmployeeForm.h"
 
 #include "Administrator.h"
 #include "Desk.h"
