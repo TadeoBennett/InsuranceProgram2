@@ -8,6 +8,7 @@
 #include <QInputDialog>
 #include <QLineEdit>
 #include <QTableView>
+#include <QCheckBox>
 #include "CreateAccount.h"
 #include "Login.h"
 #include "PolicyDetailsView.h"
@@ -48,6 +49,10 @@ private slots:
     void createInsuranceDistributionReport();
     void showEmployeeList();
     void editEmployee();
+
+    //desk
+    void showCustomerList();
+    void newCustomer();
 
 private:
     Ui::Menu *ui;

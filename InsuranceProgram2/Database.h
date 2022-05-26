@@ -36,6 +36,9 @@ public:
     //return a model of the list of employees and admins in the database
     QSqlQueryModel* getEmployeeListModel();
 
+    //return a model of the list of customers and admins in the database
+    QSqlQueryModel* getCustomerListModel();
+
     //returns true if a user was deleted
     bool deleteUser(int userid);
 

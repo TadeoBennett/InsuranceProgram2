@@ -37,6 +37,12 @@ Menu::Menu(QWidget *parent) :
     connect(ui->editEmployeeButton, SIGNAL(clicked()), this, SLOT(editEmployee()));
     connect(ui->actionEditEmployee, SIGNAL(triggered()), this, SLOT(editEmployee()));
 
+    //desk actions
+    connect(ui->seeCustomerListButton, SIGNAL(clicked()), this, SLOT(showCustomerList()));
+    connect(ui->actionCustomerList, SIGNAL(triggered()), this, SLOT(showCustomerList()));
+    connect(ui->newCustomerButton, SIGNAL(clicked()), this, SLOT(newCustomer()));
+    connect(ui->actionNewCustomer, SIGNAL(triggered()), this, SLOT(newCustomer()));
+
 
     updateMenuInterface(); //load the right interface for the right usertype
 }
@@ -264,6 +270,29 @@ void Menu::editEmployee()
     EditEmployeeForm* newForm = new EditEmployeeForm(this);
     newForm->open();
 }
+
+void Menu::showCustomerList()
+{
+    qDebug()<<"showing list of customers";
+
+    QDialog* customerList = new QDialog(this);
+    QVBoxLayout* layout = new QVBoxLayout;
+
+    QTableView* tableView = new QTableView();
+    tableView->setModel(globaldb->getCustomerListModel()); //set the table view the model that contains a list of all employees in the database
+
+    layout->addWidget(tableView); //add the tableView to the layout
+
+    customerList->setLayout(layout); //make the QDialog have the layout which contains the table of employees
+    customerList->setGeometry(0, 0, 1100, 500); //setting the window geometry
+    customerList->setWindowTitle("Customer List");
+    customerList->open(); //show the QDialog as a modal window
+}
+
+void Menu::newCustomer()
+{
+
+;}
 
 void Menu::showDeveloperInfo()
 {

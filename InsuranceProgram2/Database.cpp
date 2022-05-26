@@ -259,6 +259,13 @@ QSqlQueryModel* Database::getEmployeeListModel()
     return newModel;
 }
 
+QSqlQueryModel* Database::getCustomerListModel()
+{
+    QSqlQueryModel* newModel = new QSqlQueryModel();
+    newModel->setQuery("SELECT customer.customerid, customer.homeinsuranceid, customer.carinsuranceid, customer.lifeinsuranceid, customer.citizenship, customer.firstname, customer.middlename, customer.lastname, customer.age, customer.phonenumber,  customer.socialsecuritynumber, customer.status AS 'Customer Status', user.userid, user.username, user.email, user.password, user.status AS 'User Status' FROM customer INNER JOIN user ON customer.customerid = user.customerid;");
+    return newModel;
+}
+
 bool Database::deleteUser(int userid)
 {
     QSqlQuery deleteUser;
