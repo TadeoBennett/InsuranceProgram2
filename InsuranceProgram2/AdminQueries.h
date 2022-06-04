@@ -4,23 +4,31 @@
 #include "Customer.h"
 #include "Administrator.h"
 #include "Desk.h"
+#include <QSqlQuery>
+#include <QSqlQueryModel>
 
 class AdminQueries
 {
 public:
     AdminQueries();
 
-    void updateEmployee(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString pwd);
-    void addEmployee(int user_id, int userlevel_id, QString uname, QString fname, QString lname, int a, QString pwd);
-    void deleteEmployee(int user_id);
+    //returns true if a user was updated
+    bool updateUser(int userid, int userlevelid, QString username, QString firstname, QString lastname, int age, QString email, int status);
+
+    //returns true if a desk user was successfully added to the database
+    bool addDeskUser(QString uname, QString fname, QString lname, int a, QString em, QString pwd);
+
+    //returns true if a user was deleted
+    bool deleteUser(int userid);
+
+    //return a model of the list of employees and admins in the database
+    QSqlQueryModel* getEmployeeListModel();
+
+
+
     void increaseCarInsuranceRevenue(float amount);
     void increaseHomeInsuranceRevenue(float amount);
     void increaseLifeInsuranceRevenue(float amount);
-
-    //these QLists do not need to be saved on the heap
-    QList<Desk> get_allDeskEmployees();
-    QList<Administrator> get_allAdministrators();
-    QList<Customer> get_allCustomers();
 
     //reports
     void revenueReport();

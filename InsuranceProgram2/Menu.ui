@@ -45,6 +45,11 @@ color: #000000;
 
 }
 
+QPushButton:hover{
+	background-color: lightgrey;
+color: black;
+}
+
 QToolButton
 {
     border-radius: 30px;

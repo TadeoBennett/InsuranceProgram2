@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CreateCustomerForm</class>
+ <widget class="QDialog" name="CreateCustomerForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>933</width>
+    <height>671</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>933</width>
+    <height>671</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>933</width>
+    <height>671</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Add Customer Insurance Information</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QGroupBox &gt; QLabel{
+color: #000000;
+
+}
+
+QGroupBox &gt; QLineEdit{
+color: #000000;
+
+}
+
+#CreateCustomerForm{
+	background-color:  #C2272D;
+}</string>
+  </property>
+  <widget class="QPushButton" name="finishButton">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>30</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Finish</string>
+   </property>
+  </widget>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>70</y>
+     <width>851</width>
+     <height>571</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QScrollArea{
+padding: 10px;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::HLine</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Sunken</enum>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustToContents</enum>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>815</width>
+      <height>549</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>30</y>
+       <width>741</width>
+       <height>1451</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QGroupBox" name="basicBox">
+        <property name="font">
+         <font>
+          <underline>true</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QGroupBox{
+padding-bottom: 10px;
+padding-top: 10px;
+}</string>
+        </property>
+        <property name="title">
+         <string>Basic Insurance Information</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="1" column="0">
+          <widget class="QLineEdit" name="firstname">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_45">
+           <property name="text">
+            <string>First name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLineEdit" name="lastname">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QSpinBox" name="age">
+           <property name="maximum">
+            <number>120</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_43">
+           <property name="text">
+            <string>Phone number</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="label_42">
+           <property name="text">
+            <string>Social Security Number</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLabel" name="label_47">
+           <property name="text">
+            <string>Age</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_48">
+           <property name="text">
+            <string>Last name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_44">
+           <property name="text">
+            <string>MIddle name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="label_46">
+           <property name="text">
+            <string>Citizenship</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="middlename">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSpinBox" name="socialsecuritynumber">
+           <property name="maximum">
+            <number>999999999</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QLineEdit" name="citizenship">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLineEdit" name="phoneNumber">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="4">
+          <widget class="QLineEdit" name="email"/>
+         </item>
+         <item row="2" column="4">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Email</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="homeBox">
+        <property name="font">
+         <font>
+          <underline>true</underline>
+         </font>
+        </property>
+        <property name="title">
+         <string>Home Insurance Information</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_52">
+           <property name="text">
+            <string>Monthly Payment</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="3" colspan="3">
+          <widget class="QTextEdit" name="peopleathome">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="2">
+          <widget class="QLineEdit" name="address">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="5">
+          <widget class="QCheckBox" name="entrepreneur">
+           <property name="text">
+            <string>Check if yes</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0" colspan="3">
+          <widget class="QTextEdit" name="homeimprovements">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QSpinBox" name="home_monthduration"/>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLabel" name="label_54">
+           <property name="text">
+            <string>Pet owner</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="3" colspan="2">
+          <widget class="QLabel" name="label_56">
+           <property name="text">
+            <string>People at home</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2" colspan="2">
+          <widget class="QComboBox" name="maritalstatus">
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>married</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>widowed</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>divorced</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>separated</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>never married</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_55">
+           <property name="text">
+            <string>Marital Status</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSpinBox" name="home_monthspaid"/>
+         </item>
+         <item row="2" column="2" colspan="2">
+          <widget class="QLabel" name="label_53">
+           <property name="text">
+            <string>Month Duration</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QDoubleSpinBox" name="home_monthlypayment">
+           <property name="maximum">
+            <double>1000.990000000000009</double>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_49">
+           <property name="text">
+            <string>Home Improvements</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_50">
+           <property name="text">
+            <string>Address</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QCheckBox" name="petowner">
+           <property name="text">
+            <string>Check if yes</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="label_51">
+           <property name="text">
+            <string>Months Paid</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QLabel" name="label_57">
+           <property name="text">
+            <string>Entrepreneur</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="lifeBox">
+        <property name="font">
+         <font>
+          <underline>true</underline>
+         </font>
+        </property>
+        <property name="title">
+         <string>Life Insurance Information</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="4" column="5">
+          <widget class="QSpinBox" name="life_monthduration"/>
+         </item>
+         <item row="6" column="0" colspan="2">
+          <widget class="QTextEdit" name="beneficiaries">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0" colspan="2">
+          <widget class="QTextEdit" name="physiciandetails">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="label_60">
+           <property name="text">
+            <string>Weight</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_68">
+           <property name="text">
+            <string>Occupation</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QLabel" name="label_64">
+           <property name="text">
+            <string>Drug User</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="2" colspan="4">
+          <widget class="QTextEdit" name="seriousdiagnoses">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2" colspan="2">
+          <widget class="QCheckBox" name="feloncharges">
+           <property name="text">
+            <string>Check if yes</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2" colspan="2">
+          <widget class="QLabel" name="label_62">
+           <property name="text">
+            <string>Monthly Payment</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_63">
+           <property name="text">
+            <string>Beneficiaries</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLineEdit" name="height">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_70">
+           <property name="text">
+            <string>Height</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2" colspan="2">
+          <widget class="QDoubleSpinBox" name="life_monthlypayment">
+           <property name="maximum">
+            <double>1000.990000000000009</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QDoubleSpinBox" name="salary">
+           <property name="maximum">
+            <double>100000.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="occupation">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QLabel" name="label_71">
+           <property name="text">
+            <string>Serious Diagnoses</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QLabel" name="label_67">
+           <property name="text">
+            <string>High Risk Hobbies</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2" colspan="2">
+          <widget class="QLabel" name="label_66">
+           <property name="text">
+            <string>Felon Charges</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLineEdit" name="weight">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="4">
+          <widget class="QSpinBox" name="life_monthspaid"/>
+         </item>
+         <item row="3" column="4">
+          <widget class="QLabel" name="label_58">
+           <property name="text">
+            <string>Months Paid</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_59">
+           <property name="text">
+            <string>Salary</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="5">
+          <widget class="QLabel" name="label_65">
+           <property name="text">
+            <string>Month Duration</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_69">
+           <property name="text">
+            <string>Physician Details</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2" colspan="4">
+          <widget class="QTextEdit" name="highriskhobbies">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QCheckBox" name="misdemeanorcharges">
+           <property name="text">
+            <string>Check if yes</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="5">
+          <widget class="QCheckBox" name="druguser">
+           <property name="text">
+            <string>Check if yes</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLabel" name="label_61">
+           <property name="text">
+            <string>Misdemeanor Charges</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="carBox">
+        <property name="font">
+         <font>
+          <underline>true</underline>
+         </font>
+        </property>
+        <property name="title">
+         <string>Car Insurance Information</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="6" column="0" colspan="3">
+          <widget class="QTextEdit" name="safetyfeatures">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLabel" name="label_80">
+           <property name="text">
+            <string>Vehicle ID number</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_77">
+           <property name="text">
+            <string>Model</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_72">
+           <property name="text">
+            <string>Annual Miles</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2" colspan="2">
+          <widget class="QSpinBox" name="car_monthspaid"/>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="label_82">
+           <property name="text">
+            <string>Monthly Payment</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="3" colspan="3">
+          <widget class="QTextEdit" name="antitheftdevices">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2" colspan="2">
+          <widget class="QLabel" name="label_81">
+           <property name="text">
+            <string>License number</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QDoubleSpinBox" name="car_monthlypayment">
+           <property name="maximum">
+            <double>1000.990000000000009</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2" colspan="2">
+          <widget class="QLabel" name="label_74">
+           <property name="text">
+            <string>Months Paid</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QSpinBox" name="annualmiles">
+           <property name="minimumSize">
+            <size>
+             <width>133</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="maximum">
+            <number>500000</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="5">
+          <widget class="QSpinBox" name="year">
+           <property name="minimumSize">
+            <size>
+             <width>133</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLineEdit" name="make">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QLabel" name="label_78">
+           <property name="text">
+            <string>Year</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_73">
+           <property name="text">
+            <string>Safety Features</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="4">
+          <widget class="QLineEdit" name="vehicleidnumber">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="4">
+          <widget class="QSpinBox" name="car_monthduration"/>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="model">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2" colspan="2">
+          <widget class="QLineEdit" name="licensenumber">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_76">
+           <property name="text">
+            <string>Make</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="4">
+          <widget class="QLabel" name="label_79">
+           <property name="text">
+            <string>Month Duration</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="3" colspan="2">
+          <widget class="QLabel" name="label_75">
+           <property name="text">
+            <string>Anti Theft Devices</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="titleLabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>20</y>
+     <width>321</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+	color: #fff;
+}</string>
+   </property>
+   <property name="text">
+    <string>General and Insurance Information</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

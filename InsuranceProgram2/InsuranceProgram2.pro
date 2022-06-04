@@ -14,6 +14,7 @@ SOURCES += \
     BaseUserInfo.cpp \
     CarInsurance.cpp \
     CreateAccount.cpp \
+    CreateCustomerForm.cpp \
     Customer.cpp \
     CustomerQueries.cpp \
     Database.cpp \
@@ -27,7 +28,8 @@ SOURCES += \
     Menu.cpp \
     PolicyDetailsView.cpp \
     login.cpp \
-    main.cpp
+    main.cpp \
+    newCustomerOptions.cpp
 
 HEADERS += \
     AdminQueries.h \
@@ -35,6 +37,7 @@ HEADERS += \
     BaseUserInfo.h \
     CarInsurance.h \
     CreateAccount.h \
+    CreateCustomerForm.h \
     Customer.h \
     CustomerQueries.h \
     Database.h \
@@ -47,14 +50,17 @@ HEADERS += \
     LifeInsurance.h \
     Menu.h \
     PolicyDetailsView.h \
-    login.h
+    login.h \
+    newCustomerOptions.h
 
 FORMS += \
     CreateAccount.ui \
+    CreateCustomerForm.ui \
     EditEmployeeForm.ui \
     Menu.ui \
     PolicyDetailsView.ui \
-    login.ui
+    login.ui \
+    newCustomerOptions.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

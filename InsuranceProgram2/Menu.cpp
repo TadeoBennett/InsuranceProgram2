@@ -219,7 +219,7 @@ void Menu::changePassword()
             }
         }else{
             qDebug()<<"invalid password";
-            QMessageBox::warning(this, tr("Cannot change password"), tr("Password Input must not be empty"));
+            QMessageBox::warning(this, tr("Cannot change password"), tr("Password input must not be empty"));
             return;
         }
     }//end if
@@ -291,7 +291,8 @@ void Menu::showCustomerList()
 
 void Menu::newCustomer()
 {
-
+    newCustomerOptions* newDialog = new newCustomerOptions(this);
+    newDialog->open();
 ;}
 
 void Menu::showDeveloperInfo()

@@ -34,7 +34,7 @@ void PolicyDetailsView::loadPolicyDetails()
     ui->phoneNumber->setText(getCustomer->get_phonenumber());
     ui->socialsecuritynumber->setText(QString::number(getCustomer->get_socialsecuritynumber()));
     ui->citizenship->setText(getCustomer->get_citizenship());
-
+    ui->email->setText(getCustomer->get_email());
 
     if(getCustomer->insuranceList[0]->get_enabled()){ //car insurance exists
         //casting to a home insurance pointer to be able to access the insurance details

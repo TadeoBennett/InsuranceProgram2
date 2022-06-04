@@ -13,6 +13,7 @@
 #include "Login.h"
 #include "PolicyDetailsView.h"
 #include "EditEmployeeForm.h"
+#include "newCustomerOptions.h"
 
 #include "Administrator.h"
 #include "Desk.h"
