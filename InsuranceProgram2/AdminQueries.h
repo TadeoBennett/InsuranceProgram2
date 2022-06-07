@@ -18,7 +18,7 @@ public:
     //returns true if a desk user was successfully added to the database
     bool addDeskUser(QString uname, QString fname, QString lname, int a, QString em, QString pwd);
 
-    //returns true if a user was deleted
+    //returns true if a user was deleted(status set to 0)
     bool deleteUser(int userid);
 
     //return a model of the list of employees and admins in the database

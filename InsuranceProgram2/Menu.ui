@@ -324,19 +324,6 @@ QDialog &gt; QPushButton{
       <string>New customer</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="renewPolicyButton">
-     <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>210</y>
-       <width>171</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Renew Policy</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="seeCustomerListButton">
      <property name="geometry">
       <rect>
@@ -348,6 +335,19 @@ QDialog &gt; QPushButton{
      </property>
      <property name="text">
       <string>See Customer List</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="editCustomerButton">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>210</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Edit Customer</string>
      </property>
     </widget>
    </widget>
@@ -482,9 +482,9 @@ QDialog &gt; QPushButton{
     <addaction name="actionCreateAccount"/>
     <addaction name="menuEmployeeActions"/>
     <addaction name="menuReports"/>
-    <addaction name="actionRenewPolicy"/>
     <addaction name="actionCustomerList"/>
     <addaction name="actionNewCustomer"/>
+    <addaction name="actionEditCustomer"/>
     <addaction name="actionCreateInsurancesReport"/>
     <addaction name="actionViewPolicyDetails"/>
     <addaction name="actionLogout"/>
@@ -590,11 +590,6 @@ QDialog &gt; QPushButton{
     <string>New Customer</string>
    </property>
   </action>
-  <action name="actionRenewPolicy">
-   <property name="text">
-    <string>Renew Policy</string>
-   </property>
-  </action>
   <action name="actionCustomerList">
    <property name="text">
     <string>CustomerList</string>
@@ -608,6 +603,11 @@ QDialog &gt; QPushButton{
   <action name="actionViewPolicyDetails">
    <property name="text">
     <string>View Policy Details</string>
+   </property>
+  </action>
+  <action name="actionEditCustomer">
+   <property name="text">
+    <string>Edit Customer</string>
    </property>
   </action>
  </widget>

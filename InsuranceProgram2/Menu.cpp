@@ -42,7 +42,8 @@ Menu::Menu(QWidget *parent) :
     connect(ui->actionCustomerList, SIGNAL(triggered()), this, SLOT(showCustomerList()));
     connect(ui->newCustomerButton, SIGNAL(clicked()), this, SLOT(newCustomer()));
     connect(ui->actionNewCustomer, SIGNAL(triggered()), this, SLOT(newCustomer()));
-
+    connect(ui->editCustomerButton, SIGNAL(clicked()), this, SLOT(editCustomer()));
+    connect(ui->actionEditCustomer, SIGNAL(triggered()), this, SLOT(newCustomer()));
 
     updateMenuInterface(); //load the right interface for the right usertype
 }
@@ -68,7 +69,7 @@ void Menu::updateMenuInterface()
         ui->menuEmployeeActions->menuAction()->setVisible(false);
 
         //desk menu actions
-        ui->menuActions->removeAction(ui->actionRenewPolicy);
+//        ui->menuActions->removeAction(ui->actionRenewPolicy);
         ui->menuActions->removeAction(ui->actionCustomerList);
         ui->menuActions->removeAction(ui->actionNewCustomer);
 
@@ -92,7 +93,7 @@ void Menu::updateMenuInterface()
             ui->menuEmployeeActions->menuAction()->setVisible(true);
 
             //desk menu actions
-            ui->menuActions->removeAction(ui->actionRenewPolicy);
+//            ui->menuActions->removeAction(ui->actionRenewPolicy);
             ui->menuActions->removeAction(ui->actionCustomerList);
             ui->menuActions->removeAction(ui->actionNewCustomer);
 
@@ -114,7 +115,7 @@ void Menu::updateMenuInterface()
             ui->menuEmployeeActions->menuAction()->setVisible(false);
 
             //desk menu actions
-            ui->actionRenewPolicy->setVisible(true);
+//            ui->actionRenewPolicy->setVisible(true);
             ui->actionCustomerList->setVisible(true);
             ui->actionNewCustomer->setVisible(true);
 
@@ -136,7 +137,7 @@ void Menu::updateMenuInterface()
             ui->menuEmployeeActions->menuAction()->setVisible(false);
 
             //desk menu actions
-            ui->menuActions->removeAction(ui->actionRenewPolicy);
+//            ui->menuActions->removeAction(ui->actionRenewPolicy);
             ui->menuActions->removeAction(ui->actionCustomerList);
             ui->menuActions->removeAction(ui->actionNewCustomer);
 
@@ -158,7 +159,7 @@ void Menu::updateMenuInterface()
             ui->menuEmployeeActions->menuAction()->setVisible(false);
 
             //desk menu actions
-            ui->menuActions->removeAction(ui->actionRenewPolicy);
+//            ui->menuActions->removeAction(ui->actionRenewPolicy);
             ui->menuActions->removeAction(ui->actionCustomerList);
             ui->menuActions->removeAction(ui->actionNewCustomer);
 
@@ -293,7 +294,13 @@ void Menu::newCustomer()
 {
     newCustomerOptions* newDialog = new newCustomerOptions(this);
     newDialog->open();
-;}
+}
+
+void Menu::editCustomer()
+{
+    EditCustomerForm* newDialog = new EditCustomerForm(this);
+    newDialog->open();
+}
 
 void Menu::showDeveloperInfo()
 {

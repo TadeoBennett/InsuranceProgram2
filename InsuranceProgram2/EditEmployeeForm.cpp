@@ -144,7 +144,7 @@ void EditEmployeeForm::updateEmployee()
             if(globaldb->updateUser(userid, userlevelid, username, firstname, lastname, age, email, status)){
                 QMessageBox::information(this, tr("Success"), tr("User has been edited"));
             }else{
-                QMessageBox::warning(this, tr("Could not edit this user"), tr("User could not be edited"));
+                QMessageBox::warning(this, tr("Could not edit this user"), tr("Internal Query Error"));
             }
             ui->userid->setText("");
             ui->userlevelid->setText("");

@@ -54,7 +54,7 @@ bool AdminQueries::addDeskUser(QString uname, QString fname, QString lname, int 
 bool AdminQueries::deleteUser(int userid)
 {
     QSqlQuery deleteUser;
-    deleteUser.prepare("DELETE FROM user WHERE userid = :id");
+    deleteUser.prepare("UPDATE user SET status = 0 WHERE userid = :id;");
     deleteUser.bindValue(":id", userid);
 
     if(deleteUser.exec()){
@@ -69,6 +69,6 @@ bool AdminQueries::deleteUser(int userid)
 QSqlQueryModel* AdminQueries::getEmployeeListModel()
 {
     QSqlQueryModel* newModel = new QSqlQueryModel();
-    newModel->setQuery("SELECT * FROM user WHERE userlevelid = 1 OR userlevelid = 2 ORDER BY firstname");
+    newModel->setQuery("SELECT userid, userlevelid, username, firstname, lastname, age, email  FROM user WHERE userlevelid = 1 OR userlevelid = 2 && status = 1 ORDER BY firstname");
     return newModel;
 }

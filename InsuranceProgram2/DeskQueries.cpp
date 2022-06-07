@@ -8,7 +8,14 @@ DeskQueries::DeskQueries()
 QSqlQueryModel* DeskQueries::getCustomerListModel()
 {
     QSqlQueryModel* newModel = new QSqlQueryModel();
-    newModel->setQuery("SELECT customer.customerid, customer.homeinsuranceid, customer.carinsuranceid, customer.lifeinsuranceid, customer.citizenship, customer.firstname, customer.middlename, customer.lastname, customer.age, customer.phonenumber,  customer.socialsecuritynumber, customer.status AS 'Customer Status', user.userid, user.username, user.email, user.password, user.status AS 'User Status' FROM customer INNER JOIN user ON customer.customerid = user.customerid;");
+    newModel->setQuery("SELECT customer.customerid, customer.homeinsuranceid, customer.carinsuranceid, customer.lifeinsuranceid, customer.citizenship, customer.firstname, customer.middlename, customer.lastname, customer.age, customer.phonenumber,  customer.socialsecuritynumber, customer.status AS 'Customer Status', user.userid, user.username, user.email, user.status AS 'User Status' FROM customer INNER JOIN user ON customer.customerid = user.customerid  WHERE customer.status = 1 ORDER BY customer.firstname;");
+    return newModel;
+}
+
+QSqlQueryModel *DeskQueries::getCustomerListModelBySearch(QString name)
+{
+    QSqlQueryModel* newModel = new QSqlQueryModel();
+    newModel->setQuery(QString("SELECT customer.customerid, customer.homeinsuranceid, customer.carinsuranceid, customer.lifeinsuranceid, customer.citizenship, customer.firstname, customer.middlename, customer.lastname, customer.age, customer.phonenumber,  customer.socialsecuritynumber, customer.status AS 'Customer Status', user.userid, user.username, user.email, user.status AS 'User Status' FROM customer INNER JOIN user ON customer.customerid = user.customerid  WHERE customer.status = 1 && CONCAT(customer.firstname, ' ', customer.lastname) LIKE '%%1%';").arg(name));
     return newModel;
 }
 
@@ -57,10 +64,56 @@ int DeskQueries::addCustomer(QString uname, QString fname, QString lname, int a,
     return cus_id;
 }
 
+int DeskQueries::updateBasicCustomerDetails(int cus_id, QString ctz, QString fname, QString mname, QString lname, int a, QString phone, int social, int cus_status, QString uname, QString em)
+{
+    if(cus_status == 0){
+        deleteCustomer(cus_id);
+        return -1; //a customer was deleted(status set to o)
+    }
+
+    QSqlQuery updateCustomerRecord;
+    updateCustomerRecord.prepare("UPDATE customer SET citizenship = :ctz, firstname = :fname, middlename = :mname, lastname = :lname, age = :age, phonenumber = :phone, socialsecuritynumber = :social WHERE customerid = :cus_id");
+    updateCustomerRecord.bindValue(":ctz", ctz);
+    updateCustomerRecord.bindValue(":fname", fname);
+    updateCustomerRecord.bindValue(":mname", mname);
+    updateCustomerRecord.bindValue(":lname", lname);
+    updateCustomerRecord.bindValue(":age", a);
+    updateCustomerRecord.bindValue(":phone", phone);
+    updateCustomerRecord.bindValue(":social", social);
+    updateCustomerRecord.bindValue(":cus_id", cus_id);
+
+    if(!updateCustomerRecord.exec()){
+        qDebug()<<"update customer query failed";
+        return 0; //end attempt to update this customer
+    }else{
+        qDebug()<<"update customer query success";
+        //continue function
+    }
+
+    QSqlQuery updateUserRecord;
+    updateUserRecord.prepare("UPDATE user SET username = :uname, firstname = :fname, lastname = :lname, age = :age, email = :email WHERE customerid = :cus_id");
+    updateUserRecord.bindValue(":uname", uname);
+    updateUserRecord.bindValue(":fname", fname);
+    updateUserRecord.bindValue(":lname", lname);
+    updateUserRecord.bindValue(":age", a);
+    updateUserRecord.bindValue(":email", em);
+    updateUserRecord.bindValue(":cus_id", cus_id);
+
+    if(!updateUserRecord.exec()){
+        qDebug()<<"update user query failed";
+        return -2; //end attempt to update this customer
+    }else{
+        qDebug()<<"update user query success";
+        return 1; //attempt to edit this customer was successful
+    }
+
+    return -3;
+}
+
 bool DeskQueries::deleteCustomer(int cus_id)
 {
     QSqlQuery deleteCustomer;
-    deleteCustomer.prepare("DELETE FROM customer WHERE customerid = :cus_id");
+    deleteCustomer.prepare("UPDATE customer SET status = 0 WHERE customerid = :cus_id");
     deleteCustomer.bindValue(":cus_id", cus_id);
     if(!deleteCustomer.exec()){
         qDebug()<<"delete-customer query failed";
@@ -74,7 +127,7 @@ bool DeskQueries::deleteCustomer(int cus_id)
 bool DeskQueries::deleteUserWithCustomerId(int cus_id)
 {
     QSqlQuery deleteUser;
-    deleteUser.prepare("DELETE FROM user WHERE customerid = :cus_id");
+    deleteUser.prepare("UPDATE user SET status = 0 WHERE customerid = :cus_id");
     deleteUser.bindValue(":cus_id", cus_id);
 
     if(deleteUser.exec()){

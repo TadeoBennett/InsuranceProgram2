@@ -14,6 +14,7 @@
 #include "PolicyDetailsView.h"
 #include "EditEmployeeForm.h"
 #include "newCustomerOptions.h"
+#include "EditCustomerForm.h"
 
 #include "Administrator.h"
 #include "Desk.h"
@@ -54,6 +55,7 @@ private slots:
     //desk
     void showCustomerList();
     void newCustomer();
+    void editCustomer();
 
 private:
     Ui::Menu *ui;

@@ -15,8 +15,14 @@ public:
     //return a model of the list of customers and admins in the database
     QSqlQueryModel* getCustomerListModel();
 
+    //return a model of customers with matching name text
+    QSqlQueryModel *getCustomerListModelBySearch(QString name);
+
     //returns the customer id if the customer was added; returns 0 if it fails
     int addCustomer(QString uname, QString fname, QString lname, int a, QString pwd, int cus_id/*assigned post customer creation*/, QString ctz, QString mname, QString phone, int social, QString em, int stat);
+
+    //returns a specfic int if a customer details was updated or a customer was removed
+    int updateBasicCustomerDetails(int cus_id,  QString ctz, QString fname, QString mname , QString lname, int a, QString phone, int social, int cus_status, QString uname, QString em);
 
     //returns true if a customer was deleted
     bool deleteCustomer(int userid);
