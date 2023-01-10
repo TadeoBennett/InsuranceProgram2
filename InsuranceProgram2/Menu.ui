@@ -584,30 +584,48 @@ QDialog &gt; QPushButton{
    <property name="text">
     <string>Log out</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
   </action>
   <action name="actionNewCustomer">
    <property name="text">
     <string>New Customer</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
   <action name="actionCustomerList">
    <property name="text">
     <string>CustomerList</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+C</string>
+   </property>
   </action>
   <action name="actionCreateInsurancesReport">
    <property name="text">
     <string>Create Insurances Report</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I, Ctrl+R</string>
    </property>
   </action>
   <action name="actionViewPolicyDetails">
    <property name="text">
     <string>View Policy Details</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
   </action>
   <action name="actionEditCustomer">
    <property name="text">
     <string>Edit Customer</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E, Ctrl+C</string>
    </property>
   </action>
  </widget>

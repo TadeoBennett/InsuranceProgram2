@@ -1,4 +1,5 @@
 #include "EditCustomerForm.h"
+#include "renewPolicyOptions.h"
 #include "ui_EditCustomerForm.h"
 
 extern Database* globaldb; //holds the database object
@@ -217,7 +218,8 @@ void EditCustomerForm::updateDetails()
 void EditCustomerForm::showMoreUpdateDetails()
 {
     //open form to show all data for this user
-
+    QMessageBox::critical(this, tr("Sorry :-("), tr("Feature Under Development"));
+    return;
 }
 
 void EditCustomerForm::renewPolicy()
@@ -231,6 +233,7 @@ void EditCustomerForm::renewPolicy()
             QSqlQuery getInsuranceDetails;
             getInsuranceDetails.prepare("SELECT customer.carinsuranceid, customer.homeinsuranceid, customer.lifeinsuranceid FROM customer INNER JOIN user ON customer.customerid = user.customerid WHERE customer.customerid = :val;");
             getInsuranceDetails.bindValue(":val", selectedRecord);
+            qDebug()<<"Selected record id is "<<selectedRecord;
             if(getInsuranceDetails.exec()){
                 int carinsuranceid, homeinsuranceid, lifeinsuranceid;
                 while(getInsuranceDetails.next()){
@@ -244,6 +247,7 @@ void EditCustomerForm::renewPolicy()
                 settings.setValue("CarInsuranceExists", 0);
                 settings.setValue("HomeInsuranceExists", 0);
                 settings.setValue("LifeInsuranceExists", 0);
+                settings.setValue("CustomerId", 0);
 
                 if(carinsuranceid != 0){
                     settings.setValue("CarInsuranceExists", 1);
@@ -257,7 +261,20 @@ void EditCustomerForm::renewPolicy()
                     settings.setValue("LifeInsuranceExists", 1);
                 }
 
+                settings.setValue("CustomerId", selectedRecord);
+
+                qDebug()<<"car insurance id is "<<carinsuranceid;
+                qDebug()<<"home insurance id is "<<homeinsuranceid;
+                qDebug()<<"life insurance id is "<<lifeinsuranceid;
+
+                if(homeinsuranceid == 0 && carinsuranceid == 0 && lifeinsuranceid == 0){
+                    QMessageBox::warning(this, tr("Cannot renew policy"), tr("No policies found for this customer"));
+                    return;
+                }
+
                 //create the options dialog to show which policy to renew...
+                renewPolicyOptions* newForm = new renewPolicyOptions(this);
+                newForm->open();
 
             }
         }else{

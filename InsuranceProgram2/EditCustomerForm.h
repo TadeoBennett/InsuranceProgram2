@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "Database.h"
 #include "newCustomerOptions.h"
+#include "renewPolicyOptions.h"
 
 namespace Ui {
 class EditCustomerForm;

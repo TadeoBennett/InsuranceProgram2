@@ -53,6 +53,25 @@ void CreateCustomerForm::loadForm()
 
 }
 
+void CreateCustomerForm::addCustomer()
+{
+    //add basic customer information/all insuranceid values will be set to NULL
+    if(!globaldb->get_databaseStatus()){
+        qDebug()<<"Database connection lost";
+        QMessageBox::warning(this, tr("Cannot submit form"), tr("Database connection lost"));
+        return;
+    }else{
+
+        customerid = globaldb->addCustomer(username, firstname, lastname, age, password, customerid, citizenship, middlename, phoneNumber, socialsecuritynumber, email, status);
+        if(customerid != 0){
+            qDebug()<<"Customer added";
+        }else{
+            QMessageBox::critical(this, tr("Could not add this customer"), tr("Internal error adding customer"));
+            return;
+        }
+    }
+}
+
 void CreateCustomerForm::createCustomer()
 {
     //checking for valid inputs
@@ -60,64 +79,66 @@ void CreateCustomerForm::createCustomer()
         QMessageBox::warning(this, tr("Cannot submit form"), tr("First name input must not be empty"));
         return;
     }
-    QString firstname = ui->firstname->text();
+    firstname = ui->firstname->text();
 
 
     if(ui->middlename->text().trimmed().isEmpty()){
         QMessageBox::warning(this, tr("Cannot submit form"), tr("Middle name input must not be empty"));
         return;
     }
-    QString middlename = ui->middlename->text();
-
+    middlename = ui->middlename->text();
 
     if(ui->lastname->text().trimmed().isEmpty()){
         QMessageBox::warning(this, tr("Cannot submit form"), tr("Last name input must not be empty"));
         return;
     }
-    QString lastname = ui->lastname->text();
+    lastname = ui->lastname->text();
 
-    QString username = ui->firstname->text()[0] + ui->lastname->text();
+    username = ui->firstname->text()[0] + ui->lastname->text();
 
     if(ui->age->value() < 18){
         QMessageBox::warning(this, tr("Cannot submit form"), tr("Age input must be 18 or greater"));
         return;
     }
-    int age = ui->age->value();
+    age = ui->age->value();
 
     if(ui->phoneNumber->text().trimmed().isEmpty()){
         QMessageBox::warning(this, tr("Cannot submit form"), tr("Phone number input must not be empty"));
         return;
     }
-    QString phoneNumber = ui->phoneNumber->text();
+    phoneNumber = ui->phoneNumber->text();
 
     if(ui->socialsecuritynumber->text().trimmed().isEmpty()){
         QMessageBox::warning(this, tr("Cannot submit form"), tr("Social Security number input must not be empty"));
         return;
     }
-    int socialsecuritynumber = ui->socialsecuritynumber->value();
+    socialsecuritynumber = ui->socialsecuritynumber->value();
 
     if(ui->citizenship->text().trimmed().isEmpty()){
         QMessageBox::warning(this, tr("Cannot submit form"), tr("Citizenship input must not be empty"));
         return;
     }
-    QString citizenship = ui->citizenship->text();
+    citizenship = ui->citizenship->text();
 
     if(ui->email->text().trimmed().isEmpty()){
         QMessageBox::warning(this, tr("Cannot submit form"), tr("Email input must not be empty"));
         return;
     }
-    QString email = ui->email->text();
+    email = ui->email->text();
 
-    QString password = "password123";
-    int status = 1;
-    int customerid = 0;
+    password = "password123";
+    status = 1;
+    customerid = 0;
 
     QSettings settings("TadeoBennett Programs", "Tadeo Bennett Insurance Distribution & Login System");
 
     //checking in the settings which insurance options were selected...
-
-    //------------------------------------------------------------------
+    int lifeinsuranceid; //flag to check if this insuranceExists
     int carinsuranceid; //flag to check if this insuranceExists
+    int homeinsuranceid; //flag to check if this insuranceExists
+
+    addCustomer();
+    //------------------------------------------------------------------
 
     if(settings.value("CarInsuranceOption") == 1){
         //check if the most important details were set
@@ -176,19 +197,20 @@ void CreateCustomerForm::createCustomer()
             return;
         }else{
             //add basic customer information/all insuranceid values will be set to NULL
-            if(!globaldb->get_databaseStatus()){
-                qDebug()<<"Database connection lost";
-                QMessageBox::warning(this, tr("Cannot submit form"), tr("Database connection lost"));
-                return;
-            }else{
-                customerid = globaldb->addCustomer(username, firstname, lastname, age, password, customerid, citizenship, middlename, phoneNumber, socialsecuritynumber, email, status);
-                if(customerid != 0){
-                    qDebug()<<"Customer added";
-                }else{
-                    QMessageBox::critical(this, tr("Could not add this customer"), tr("Internal error adding customer"));
-                    return;
-                }
-            }
+//            if(!globaldb->get_databaseStatus()){
+//                qDebug()<<"Database connection lost";
+//                QMessageBox::warning(this, tr("Cannot submit form"), tr("Database connection lost"));
+//                return;
+//            }else{
+//                //add the customer information
+//                customerid = globaldb->addCustomer(username, firstname, lastname, age, password, customerid, citizenship, middlename, phoneNumber, socialsecuritynumber, email, status);
+//                if(customerid != 0){
+//                    qDebug()<<"Customer added";
+//                }else{
+//                    QMessageBox::critical(this, tr("Could not add this customer"), tr("Internal error adding customer"));
+//                    return;
+//                }
+//            }
 
             //add insurance policy for customer-pass the customer id returned
             carinsuranceid = globaldb->addCarInsurance(make, model, licensenumber, vehicleidnumber, year, annualmiles, safetyfeatures, antitheftdevices, customerid, monthlypayment, monthspaid, monthduration);
@@ -203,7 +225,6 @@ void CreateCustomerForm::createCustomer()
     }
 
     //------------------------------------------------------------------
-    int homeinsuranceid; //flag to check if this insuranceExists
 
     if(settings.value("HomeInsuranceOption") == 1){
         //check if the most important details were set
@@ -262,19 +283,19 @@ void CreateCustomerForm::createCustomer()
             return;
         }else{
             //add basic customer information/all insuranceid values will be set to NULL
-            if(!globaldb->get_databaseStatus()){
-                qDebug()<<"Database connection lost";
-                QMessageBox::warning(this, tr("Cannot submit form"), tr("Database connection lost"));
-                return;
-            }else{
-                customerid = globaldb->addCustomer(username, firstname, lastname, age, password, customerid, citizenship, middlename, phoneNumber, socialsecuritynumber, email, status);
-                if(customerid != 0){
-                    qDebug()<<"Customer added";
-                }else{
-                    QMessageBox::critical(this, tr("Could not add this customer"), tr("Internal error adding customer"));
-                    return;
-                }
-            }
+//            if(!globaldb->get_databaseStatus()){
+//                qDebug()<<"Database connection lost";
+//                QMessageBox::warning(this, tr("Cannot submit form"), tr("Database connection lost"));
+//                return;
+//            }else{
+//                customerid = globaldb->addCustomer(username, firstname, lastname, age, password, customerid, citizenship, middlename, phoneNumber, socialsecuritynumber, email, status);
+//                if(customerid != 0){
+//                    qDebug()<<"Customer added";
+//                }else{
+//                    QMessageBox::critical(this, tr("Could not add this customer"), tr("Internal error adding customer"));
+//                    return;
+//                }
+//            }
 
             //add insurance policy for customer-pass the customer id returned
             homeinsuranceid = globaldb->addHomeInsurance(address, maritalstatus, homeimprovements, petowner, entrepreneur, peopleathome, /**/customerid, monthlypayment, monthspaid, monthduration);
@@ -290,7 +311,6 @@ void CreateCustomerForm::createCustomer()
     }
 
     //------------------------------------------------------------------
-    int lifeinsuranceid; //flag to check if this insuranceExists
 
     if(settings.value("LifeInsuranceOption") == 1){
         //check if the most important details were set
@@ -361,24 +381,24 @@ void CreateCustomerForm::createCustomer()
             return;
         }else{
             //add basic customer information/all insuranceid values will be set to NULL
-            if(!globaldb->get_databaseStatus()){
-                qDebug()<<"Database connection lost";
-                QMessageBox::warning(this, tr("Cannot submit form"), tr("Database connection lost"));
-                return;
-            }else{
-                customerid = globaldb->addCustomer(username, firstname, lastname, age, password, customerid, citizenship, middlename, phoneNumber, socialsecuritynumber, email, status);
-                if(customerid != 0){
-                    qDebug()<<"Customer added";
-                }else{
-                    QMessageBox::critical(this, tr("Could not add this customer"), tr("Internal error adding customer"));
-                    return;
-                }
-            }
+//            if(!globaldb->get_databaseStatus()){
+//                qDebug()<<"Database connection lost";
+//                QMessageBox::warning(this, tr("Cannot submit form"), tr("Database connection lost"));
+//                return;
+//            }else{
+//                customerid = globaldb->addCustomer(username, firstname, lastname, age, password, customerid, citizenship, middlename, phoneNumber, socialsecuritynumber, email, status);
+//                if(customerid != 0){
+//                    qDebug()<<"Customer added";
+//                }else{
+//                    QMessageBox::critical(this, tr("Could not add this customer"), tr("Internal error adding customer"));
+//                    return;
+//                }
+//            }
 
             //add insurance policy for customer-pass the customer id returned
             lifeinsuranceid = globaldb->addLifeInsurance(salary, occupation, beneficiaries, feloncharges, misdemeanorcharges, druguser, highriskhobbies, height, weight, physiciandetails, seriousdiagnoses, /**/customerid, monthlypayment, monthspaid, monthduration);
             if(lifeinsuranceid != 0){
-                qDebug()<<"added new car insurance";
+                qDebug()<<"added new life insurance";
                 //add the insurance id to the customer record
                 globaldb->combineLifeInsuranceWithCustomer(customerid, lifeinsuranceid);
             }else{
@@ -388,4 +408,13 @@ void CreateCustomerForm::createCustomer()
     }
 
     //customer/user/insurances added
+
+    //resetting the settings
+    settings.setValue("HomeInsuranceOption", 0);
+    settings.setValue("CarInsuranceOption", 0);
+    settings.setValue("LifeInsuranceOption", 0);
+
+
+    QMessageBox::warning(this, tr("Customer Created"), tr("Customer and insurance details has been added"));
+    this->close();
 }

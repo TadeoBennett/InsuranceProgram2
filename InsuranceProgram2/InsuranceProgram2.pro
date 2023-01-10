@@ -28,9 +28,11 @@ SOURCES += \
     LifeInsurance.cpp \
     Menu.cpp \
     PolicyDetailsView.cpp \
+    RenewPolicyForm.cpp \
     login.cpp \
     main.cpp \
-    newCustomerOptions.cpp
+    newCustomerOptions.cpp \
+    renewPolicyOptions.cpp
 
 HEADERS += \
     AdminQueries.h \
@@ -52,8 +54,10 @@ HEADERS += \
     LifeInsurance.h \
     Menu.h \
     PolicyDetailsView.h \
+    RenewPolicyForm.h \
     login.h \
-    newCustomerOptions.h
+    newCustomerOptions.h \
+    renewPolicyOptions.h
 
 FORMS += \
     CreateAccount.ui \
@@ -62,8 +66,10 @@ FORMS += \
     EditEmployeeForm.ui \
     Menu.ui \
     PolicyDetailsView.ui \
+    RenewPolicyForm.ui \
     login.ui \
-    newCustomerOptions.ui
+    newCustomerOptions.ui \
+    renewPolicyOptions.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

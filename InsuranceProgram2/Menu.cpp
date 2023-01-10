@@ -43,7 +43,7 @@ Menu::Menu(QWidget *parent) :
     connect(ui->newCustomerButton, SIGNAL(clicked()), this, SLOT(newCustomer()));
     connect(ui->actionNewCustomer, SIGNAL(triggered()), this, SLOT(newCustomer()));
     connect(ui->editCustomerButton, SIGNAL(clicked()), this, SLOT(editCustomer()));
-    connect(ui->actionEditCustomer, SIGNAL(triggered()), this, SLOT(newCustomer()));
+    connect(ui->actionEditCustomer, SIGNAL(triggered()), this, SLOT(editCustomer()));
 
     updateMenuInterface(); //load the right interface for the right usertype
 }
@@ -96,6 +96,7 @@ void Menu::updateMenuInterface()
 //            ui->menuActions->removeAction(ui->actionRenewPolicy);
             ui->menuActions->removeAction(ui->actionCustomerList);
             ui->menuActions->removeAction(ui->actionNewCustomer);
+            ui->menuActions->removeAction(ui->actionEditCustomer);
 
             //customer menu action
             ui->menuActions->removeAction(ui->actionCreateInsurancesReport);
@@ -144,6 +145,7 @@ void Menu::updateMenuInterface()
             //customer menu action
             ui->actionCreateInsurancesReport->setVisible(true);
             ui->actionViewPolicyDetails->setVisible(true);
+            ui->menuActions->removeAction(ui->actionEditCustomer);
 
         }else{
             qDebug()<<"no userlevel read";
@@ -240,11 +242,13 @@ void Menu::createInsurancesReport()
 void Menu::createRevenueReport()
 {
     qDebug()<<"Revenue Report created";
+    QMessageBox::critical(this, tr("Sorry :-("), tr("Feature Under Development"));
 }
 
 void Menu::createInsuranceDistributionReport()
 {
     qDebug()<<"Insurance Distribution Report created";
+    QMessageBox::critical(this, tr("Sorry :-("), tr("Feature Under Development"));
 }
 
 void Menu::showEmployeeList()

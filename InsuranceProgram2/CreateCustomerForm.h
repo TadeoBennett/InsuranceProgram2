@@ -19,12 +19,24 @@ public:
     ~CreateCustomerForm();
 
     void loadForm();
+    void addCustomer();
 
 private slots:
     void createCustomer();
 
 private:
     Ui::CreateCustomerForm *ui;
+
+    int customerid, socialsecuritynumber, age, status;
+    QString username;
+    QString firstname;
+    QString middlename;
+    QString lastname;
+    QString password;
+    QString citizenship;
+    QString phoneNumber;
+    QString email;
+
 };
 
 #endif // CREATECUSTOMERFORM_H

@@ -39,7 +39,7 @@ void Login::on_actionDeveloperInfo_triggered()
     QString message = "";
     message.append("<div><p>Developed by Tadeo Bennett</p>");
     message.append("<p>This project was first built as a c++ console application in the span of 2-3 weeks. "
-                   "Many object-oriented concepts were used, enhanced and some were even learnt. My plan "
+                   "Data structures learnt were maps, linked lists, pointers and structs among various other things. My plan "
                    "was to take what I had learnt in my gui programming class which was taught using the Qt software, and "
                    "re-do this project. This gives me the opportunity to iron out the mistakes from my previous project, and "
                    "sharpen my skills in creating graphical applications backed by object-oriented principles. My success "

@@ -1,5 +1,9 @@
 #include "DeskQueries.h"
 
+#include <ctime>
+#include <iostream>
+    using namespace std;
+
 DeskQueries::DeskQueries()
 {
 
@@ -250,7 +254,7 @@ bool DeskQueries::combineHomeInsuranceWithCustomer(int cus_id, int insuranceid)
 {
     QSqlQuery combineHomeInsurance;
     combineHomeInsurance.prepare("UPDATE `customer` SET homeinsuranceid = :insuranceid WHERE customerid = :cus_id;");
-    combineHomeInsurance.bindValue(":insurancid", insuranceid);
+    combineHomeInsurance.bindValue(":insuranceid", insuranceid);
     combineHomeInsurance.bindValue(":cus_id", cus_id);
 
     if(combineHomeInsurance.exec()){
@@ -267,7 +271,7 @@ bool DeskQueries::combineLifeInsuranceWithCustomer(int cus_id, int insuranceid)
 {
     QSqlQuery combineLifeInsurance;
     combineLifeInsurance.prepare("UPDATE `customer` SET lifeinsuranceid = :insuranceid WHERE customerid = :cus_id;");
-    combineLifeInsurance.bindValue(":insurancid", insuranceid);
+    combineLifeInsurance.bindValue(":insuranceid", insuranceid);
     combineLifeInsurance.bindValue(":cus_id", cus_id);
 
     if(combineLifeInsurance.exec()){
@@ -275,6 +279,158 @@ bool DeskQueries::combineLifeInsuranceWithCustomer(int cus_id, int insuranceid)
         return true;
     }else{
         qDebug()<<"combine life insurance query failed";
+    }
+
+    return false;
+}
+
+double *DeskQueries::get_policyDetails(int itype, int userid)
+{
+    QSqlQuery insurancePolicyRenewDetails;
+    switch(itype){
+        case 1:{
+            insurancePolicyRenewDetails.prepare("SELECT carinsurance.monthlypayment, carinsurance.monthspaid, carinsurance.monthlimit FROM carinsurance WHERE carinsurance.customerid = :cus_id;");
+            insurancePolicyRenewDetails.bindValue(":cus_id", userid);
+            if(insurancePolicyRenewDetails.exec()){
+                qDebug()<<"get policy details successful";
+            }else{
+                qDebug()<<"get policy details failed";
+                static double failed = 991; //return this int value if this query had failed
+                return &failed;
+            }
+            qDebug()<< "showing the policy details";
+            double monthlypayment;
+            int monthspaid, monthlimit;
+            while(insurancePolicyRenewDetails.next()){
+                qDebug()<< insurancePolicyRenewDetails.value(0).toDouble();
+                monthlypayment = insurancePolicyRenewDetails.value(0).toDouble();
+                qDebug()<< insurancePolicyRenewDetails.value(1).toInt();
+                monthspaid = insurancePolicyRenewDetails.value(1).toInt();
+                qDebug()<< insurancePolicyRenewDetails.value(2).toInt();
+                monthlimit = insurancePolicyRenewDetails.value(2).toInt();
+            }
+            static double arr[3];
+            arr[0] = monthlypayment;
+            arr[1] = monthspaid;
+            arr[2] = monthlimit;
+
+            return arr;
+        break;}
+
+        case 2:{
+            insurancePolicyRenewDetails.prepare("SELECT homeinsurance.monthlypayment, homeinsurance.monthspaid, homeinsurance.monthlimit FROM homeinsurance WHERE homeinsurance.customerid = :cus_id;");
+            insurancePolicyRenewDetails.bindValue(":cus_id", userid);
+            if(insurancePolicyRenewDetails.exec()){
+                qDebug()<<"get policy details successful";
+            }else{
+                qDebug()<<"get policy details failed";
+                static double failed = 992; //return this int value if this query had failed
+                return &failed;
+            }
+            qDebug()<< "showing the policy details";
+            double monthlypayment;
+            int monthspaid, monthlimit;
+            while(insurancePolicyRenewDetails.next()){
+                qDebug()<< insurancePolicyRenewDetails.value(0).toDouble();
+                monthlypayment = insurancePolicyRenewDetails.value(0).toDouble();
+                qDebug()<< insurancePolicyRenewDetails.value(1).toInt();
+                monthspaid = insurancePolicyRenewDetails.value(1).toInt();
+                qDebug()<< insurancePolicyRenewDetails.value(2).toInt();
+                monthlimit = insurancePolicyRenewDetails.value(2).toInt();
+            }
+
+            static double arr[3];
+            arr[0] = monthlypayment;
+            arr[1] = monthspaid;
+            arr[2] = monthlimit;
+
+            return arr;
+
+        break;}
+
+        case 3:{
+            insurancePolicyRenewDetails.prepare("SELECT lifeinsurance.monthlypayment, lifeinsurance.monthspaid, lifeinsurance.monthlimit FROM lifeinsurance WHERE lifeinsurance.customerid = :cus_id;");
+            insurancePolicyRenewDetails.bindValue(":cus_id", userid);
+            if(insurancePolicyRenewDetails.exec()){
+                qDebug()<<"get policy details successful";
+            }else{
+                qDebug()<<"get policy details failed";
+                static double failed = 993; //return this int value if this query had failed
+                return &failed;
+            }
+            qDebug()<< "showing the policy details";
+            double monthlypayment;
+            int monthspaid, monthlimit;
+            while(insurancePolicyRenewDetails.next()){
+                qDebug()<< insurancePolicyRenewDetails.value(0).toDouble();
+                monthlypayment = insurancePolicyRenewDetails.value(0).toDouble();
+                qDebug()<< insurancePolicyRenewDetails.value(1).toInt();
+                monthspaid = insurancePolicyRenewDetails.value(1).toInt();
+                qDebug()<< insurancePolicyRenewDetails.value(2).toInt();
+                monthlimit = insurancePolicyRenewDetails.value(2).toInt();
+            }
+
+            static double arr[3];
+            arr[0] = monthlypayment;
+            arr[1] = monthspaid;
+            arr[2] = monthlimit;
+
+            return arr;
+
+        break;}
+    }
+
+    static double failed = 994;
+    return &failed;
+
+//    static int  r[10];
+
+//    // set the seed
+//    srand( (unsigned)time( NULL ) );
+
+//    for (int i = 0; i < 10; ++i) {
+//       r[i] = rand();
+//    }
+
+    //    return r;
+}
+
+bool DeskQueries::renewInsurance(int id, int itype, int mpaid)
+{
+    QSqlQuery insuranceRenew;
+    if (itype == 1){ //car insurance
+        insuranceRenew.prepare("UPDATE carinsurance SET monthspaid = :mpaid WHERE customerid = :cus_id;");
+        insuranceRenew.bindValue(":mpaid", mpaid);
+        insuranceRenew.bindValue(":cus_id", id);
+        if(insuranceRenew.exec()){
+            qDebug()<<"renew car insurance details successful";
+            return true;
+        }else{
+            qDebug()<<"renew carinsurance details failed";
+            return false;
+        }
+    }else if(itype == 2){ //home insurance
+        insuranceRenew.prepare("UPDATE homeinsurance SET monthspaid = :mpaid WHERE customerid = :cus_id;");
+        insuranceRenew.bindValue(":mpaid", mpaid);
+        insuranceRenew.bindValue(":cus_id", id);
+        if(insuranceRenew.exec()){
+            qDebug()<<"renew home insurance details successful";
+            return true;
+        }else{
+            qDebug()<<"renew home insurance details failed";
+            return false;
+        }
+    }else if(itype == 3){ //life insurance
+        insuranceRenew.prepare("UPDATE lifeinsurance SET monthspaid = :mpaid WHERE customerid = :cus_id;");
+        insuranceRenew.bindValue(":mpaid", mpaid);
+        insuranceRenew.bindValue(":cus_id", id);
+        if(insuranceRenew.exec()){
+            qDebug()<<"renew life insurance details successful";
+            return true;
+        }else{
+            qDebug()<<"renew life insurance details failed";
+            return false;
+        }
     }
 
     return false;
