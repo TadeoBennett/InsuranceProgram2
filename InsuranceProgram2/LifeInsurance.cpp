@@ -1,3 +1,4 @@
+//Tadeo Bennett
 #include "LifeInsurance.h"
 
 LifeInsurance::LifeInsurance()

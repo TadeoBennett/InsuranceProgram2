@@ -1,3 +1,4 @@
+//Tadeo Bennett
 #include "Database.h"
 
 extern BaseUserInfo* loggedInUser; //holds the values of the logged in user

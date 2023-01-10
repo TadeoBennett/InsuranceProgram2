@@ -1,3 +1,4 @@
+//Tadeo Bennett
 #include "BaseUserInfo.h"
 
 BaseUserInfo::BaseUserInfo()
