@@ -1,0 +1,111 @@
+make the create account page and links to it
+setup the class structure
+setup the other pages in the dialogue
+
+
+///----------------------------
+TO INFORM PEOPLE ABOUT
+.creating multiple graphs on a window
+.adding widgets to a QScrollArea
+.
+
+////-------------------------------------------------------------------------
+QMainWindow{
+	background-color:  #C2272D;
+}
+
+QLineEdit{
+	background-color: #fff;
+	color: #000000;
+	border-radius:  15px;
+	padding-left : 11px;
+}
+
+QPushButton{
+background-color: #fff;
+text-transform: uppercase;
+border-radius:  15px;
+color: #000000;
+
+}
+
+QToolButton
+{
+    border-radius: 30px;
+}
+
+QMenu{
+background-color:  gray;
+color: #fff;
+}
+
+QMenuBar{
+background-color:  #434343;
+color: #fff;
+}
+
+QAction{
+background-color: gray;
+color: #fff;
+
+}
+
+QMenuBar::item:selected{
+background-color: gray;
+color: #fff;
+}
+
+QMenu::item:selected{
+background-color:  #404040;
+}
+////-------------------------------------------------------------------------
+
+//Inserts value at the beginning of the list.
+QList<QString> list;
+list.prepend("one");
+list.prepend("two");
+list.prepend("three");
+// list: ["three", "two", "one"]
+
+
+//Inserts value at the end of the list.
+QList<QString> list;
+list.append("one");
+list.append("two");
+QString three = "three";
+list.append(three);
+// list: ["one", "two", "three"]
+// three: "three"
+
+
+//syntax to insert to a list
+policyList.push_back(new CarInsurance(arg1, arg2, arg3...))
+
+//dynamic cast syntax
+CarInsurance* t = dynamic_cast<CarInsurance*>(temp1->policyList[1]);
+
+//needed when using dynamic cast; used in the base class
+virtual void cast(){} //helps with dynamic cast
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
