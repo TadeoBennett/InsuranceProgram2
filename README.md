@@ -1,4 +1,4 @@
-# InsuranceProgram2 - PERSONAL PROJECT STILL UNDER DEVELOPMENT
+# InsuranceProgram2
 A program that allows system users to create, delete, and update insurance policies for customers.
 This app can be translated to spanish to accomodate more users.
 
